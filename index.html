@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детская Студия Рисования - Творчество для детей</title>
+    <meta name="description" content="Детская изостудия в Москве. Рисование и лепка для детей от 3 лет. Профессиональные преподаватели, современные материалы.">
+    <meta name="keywords" content="изостудия, рисование для детей, лепка, творчество, Москва">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Детская Изостудия - Творческое развитие детей">
+    <meta property="og:description" content="Профессиональное обучение рисованию и лепке для детей от 3 лет">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="IMG/hero-image.jpg">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Хедер с навигацией -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Изостудия</h1>
+                <p>Творческое развитие детей</p>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#programs">Программы</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главная секция -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Добро пожаловать в мир творчества!</h2>
+                <p class="hero-subtitle">Развиваем художественные способности детей с 3 лет</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Записаться на пробное занятие</button>
+                    <button class="btn-secondary" onclick="document.getElementById('programs').scrollIntoView({behavior: 'smooth'})">Узнать больше</button>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Секция программ -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <h2 class="section-title">Наши программы</h2>
+
+            <div class="program-card">
+                <div class="program-image">
+                    <img src="IMG/drawing-kids.jpg" alt="Рисование для малышей">
+                </div>
+                <div class="program-content">
+                    <h3>Рисование для детей от 3х лет</h3>
+                    <p>Основная цель занятий - развитие художественно-творческих способностей детей. Знакомим с элементарными основами изобразительной грамоты, помогаем приобрести опыт творческой деятельности.</p>
+                    <ul class="program-benefits">
+                        <li>Развитие творческих способностей</li>
+                        <li>Воспитание эстетического вкуса</li>
+                        <li>Формирование аккуратности и трудолюбия</li>
+                        <li>Умение доводить начатое дело до конца</li>
+                    </ul>
+                    <button class="btn-program">Подробнее</button>
+                </div>
+            </div>
+
+            <div class="program-card reverse">
+                <div class="program-image">
+                    <img src="IMG/sculpting-kids.jpg" alt="Лепка для детей">
+                </div>
+                <div class="program-content">
+                    <h3>Лепка для детей от 3х лет</h3>
+                    <p>Трудно найти ребенка, который не любил бы лепить. Дети просто обожают это увлекательное занятие. За считанные минуты в руках ребенка брусочек пластилина может превратиться в дивный мир, наполненный любимыми героями.</p>
+                    <ul class="program-benefits">
+                        <li>Развитие мелкой моторики</li>
+                        <li>Пространственное мышление</li>
+                        <li>Творческое воображение</li>
+                        <li>Работа с различными материалами</li>
+                    </ul>
+                    <button class="btn-program">Подробнее</button>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <div class="program-image">
+                    <img src="IMG/drawing-school.jpg" alt="Рисование для школьников">
+                </div>
+                <div class="program-content">
+                    <h3>Рисование для школьников</h3>
+                    <p>Программа составлена с учетом возрастных особенностей и базовых навыков. Нацелена на совершенствование навыков рисования, освоение основных законов изобразительной деятельности.</p>
+                    <ul class="program-benefits">
+                        <li>Работа с различными материалами</li>
+                        <li>Развитие композиционных навыков</li>
+                        <li>Изучение техник: карандаш, акварель, гуашь, пастель</li>
+                        <li>Художественное мышление</li>
+                    </ul>
+                    <button class="btn-program">Подробнее</button>
+                </div>
+            </div>
+
+            <div class="program-card reverse">
+                <div class="program-image">
+                    <img src="IMG/advanced-art.jpg" alt="Изобразительное искусство">
+                </div>
+                <div class="program-content">
+                    <h3>Изобразительное искусство для старшеклассников</h3>
+                    <p>Занятия для подготовки к поступлению в профильные заведения или для развития художественных навыков. Изучаем основы академического рисунка, колористики, световедения.</p>
+                    <ul class="program-benefits">
+                        <li>Подготовка профессионального портфолио</li>
+                        <li>Академический рисунок</li>
+                        <li>Основы композиции</li>
+                        <li>Различные техники рисунка и живописи</li>
+                    </ul>
+                    <button class="btn-program">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "О нас" -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нашей студии</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Почему выбирают нас?</h3>
+                    <p>Наша студия работает уже более 10 лет, за это время мы помогли сотням детей раскрыть свой творческий потенциал. Мы используем проверенные методики и современные материалы.</p>
+
+                    <div class="about-features">
+                        <div class="feature">
+                            <h4>Опытные преподаватели</h4>
+                            <p>Наши педагоги имеют художественное образование и большой опыт работы с детьми</p>
+                        </div>
+                        <div class="feature">
+                            <h4>Индивидуальный подход</h4>
+                            <p>К каждому ребенку мы находим особый подход, учитывая его возраст и способности</p>
+                        </div>
+                        <div class="feature">
+                            <h4>Современные материалы</h4>
+                            <p>Используем качественные и безопасные материалы для творчества</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="IMG/studio-interior.jpg" alt="Интерьер студии">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция галереи с каруселью -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Галерея работ</h2>
+            <div class="gallery-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="gallery-item">
+                            <img src="IMG/work1.jpg" alt="Работа ученика 1">
+                            <div class="gallery-overlay">
+                                <h4>Рисунок акварелью</h4>
+                                <p>Маша, 7 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work2.jpg" alt="Работа ученика 2">
+                            <div class="gallery-overlay">
+                                <h4>Пластилиновая скульптура</h4>
+                                <p>Артем, 5 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work3.jpg" alt="Работа ученика 3">
+                            <div class="gallery-overlay">
+                                <h4>Гуашь, портрет</h4>
+                                <p>Соня, 10 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work4.jpg" alt="Работа ученика 4">
+                            <div class="gallery-overlay">
+                                <h4>Карандашный рисунок</h4>
+                                <p>Данил, 12 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work5.jpg" alt="Работа ученика 5">
+                            <div class="gallery-overlay">
+                                <h4>Пастель, пейзаж</h4>
+                                <p>Лена, 14 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work6.jpg" alt="Работа ученика 6">
+                            <div class="gallery-overlay">
+                                <h4>Масляная живопись</h4>
+                                <p>Максим, 16 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work7.jpg" alt="Работа ученика 7">
+                            <div class="gallery-overlay">
+                                <h4>Коллаж</h4>
+                                <p>Алиса, 8 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work8.jpg" alt="Работа ученика 8">
+                            <div class="gallery-overlay">
+                                <h4>Глиняная работа</h4>
+                                <p>Никита, 9 лет</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопки навигации -->
+                <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущий слайд">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="carousel-btn carousel-btn-next" aria-label="Следующий слайд">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+
+                <!-- Индикаторы -->
+                <div class="carousel-indicators">
+                    <button class="indicator active" data-slide="0"></button>
+                    <button class="indicator" data-slide="1"></button>
+                    <button class="indicator" data-slide="2"></button>
+                    <button class="indicator" data-slide="3"></button>
+                    <button class="indicator" data-slide="4"></button>
+                    <button class="indicator" data-slide="5"></button>
+                    <button class="indicator" data-slide="6"></button>
+                    <button class="indicator" data-slide="7"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция контактов с картой -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты и запись</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Свяжитесь с нами</h3>
+                    <div class="contact-item">
+                        <strong>Телефон:</strong> 
+                        <a href="tel:+79123456789">+7 (912) 345-67-89</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email:</strong> 
+                        <a href="mailto:info@izostudiya.ru">info@izostudiya.ru</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Адрес:</strong> 
+                        <address>г. Москва, ул. Примерная, д. 1, корп. 2</address>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Режим работы:</strong><br>
+                        <div class="schedule">
+                            <div class="schedule-item">
+                                <span class="day">Пн-Пт:</span>
+                                <span class="time">15:00-20:00</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="day">Сб-Вс:</span>
+                                <span class="time">10:00-18:00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карта -->
+                    <div class="map-container">
+                        <h4>Как нас найти</h4>
+                        <div id="yandex-map" class="yandex-map"></div>
+                        <div class="map-fallback">
+                            <p>Карта загружается...</p>
+                            <button id="load-map-btn" class="btn-map">Показать карту</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Записаться на пробное занятие</h3>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <input type="text" placeholder="Имя ребенка" required>
+                            </div>
+                            <div class="form-group half">
+                                <input type="number" placeholder="Возраст ребенка" min="3" max="18" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <input type="text" placeholder="Имя родителя" required>
+                            </div>
+                            <div class="form-group half">
+                                <input type="tel" placeholder="Телефон" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email (необязательно)">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Выберите программу</option>
+                                <option value="drawing-3">Рисование для малышей (3-6 лет)</option>
+                                <option value="sculpting-3">Лепка для малышей (3-6 лет)</option>
+                                <option value="drawing-school">Рисование для школьников (7-12 лет)</option>
+                                <option value="sculpting-school">Лепка для школьников (7-12 лет)</option>
+                                <option value="advanced">Для старшеклассников (13-17 лет)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select>
+                                <option value="">Удобное время (необязательно)</option>
+                                <option value="morning">Утром (10:00-12:00)</option>
+                                <option value="afternoon">Днем (14:00-16:00)</option>
+                                <option value="evening">Вечером (17:00-19:00)</option>
+                                <option value="weekend">Выходные</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Дополнительные пожелания или вопросы" rows="4"></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" required>
+                                <span class="checkmark"></span>
+                                Согласен с <a href="#" class="privacy-link">политикой конфиденциальности</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn-primary full-width">Записаться на пробное занятие</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Изостудия</h3>
+                    <p>Творческое развитие детей</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="#programs">Программы</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#gallery">Галерея</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Мы в соцсетях</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Telegram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Изостудия. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
