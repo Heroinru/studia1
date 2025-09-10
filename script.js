@@ -583,7 +583,7 @@ class YandexMapIntegration {
         this.loadButton = document.getElementById('load-map-btn');
 
         // Координаты студии (пример - центр Москвы, замените на реальные)
-        this.coordinates = [55.751244, 37.618423];
+        this.coordinates = [55.688209, 37.296337];
         this.mapLoaded = false;
 
         this.init();
