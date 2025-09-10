@@ -70,7 +70,7 @@ body {
 
     /* задаём минимальную высоту */
     min-height: 60vh;      /* 60% от высоты окна */
-    height: auto;          /* разрешаем истинную высоту по содержимому */
+    height: 1000;          /* разрешаем истинную высоту по содержимому */
 
     background: url("IMG/header-bg.jpg") center center / cover no-repeat;
     color: white;
