@@ -313,57 +313,58 @@
 
                 <div class="contact-form">
                     <h3>Записаться на пробное занятие</h3>
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group half">
-                                <input type="text" placeholder="Имя ребенка" required>
-                            </div>
-                            <div class="form-group half">
-                                <input type="number" placeholder="Возраст ребенка" min="3" max="18" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group half">
-                                <input type="text" placeholder="Имя родителя" required>
-                            </div>
-                            <div class="form-group half">
-                                <input type="tel" placeholder="Телефон" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email (необязательно)">
-                        </div>
-                        <div class="form-group">
-                            <select required>
-                                <option value="">Выберите программу</option>
-                                <option value="drawing-3">Рисование для малышей (3-6 лет)</option>
-                                <option value="sculpting-3">Лепка для малышей (3-6 лет)</option>
-                                <option value="drawing-school">Рисование для школьников (7-12 лет)</option>
-                                <option value="sculpting-school">Лепка для школьников (7-12 лет)</option>
-                                <option value="advanced">Для старшеклассников (13-17 лет)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select>
-                                <option value="">Удобное время (необязательно)</option>
-                                <option value="morning">Утром (10:00-12:00)</option>
-                                <option value="afternoon">Днем (14:00-16:00)</option>
-                                <option value="evening">Вечером (17:00-19:00)</option>
-                                <option value="weekend">Выходные</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Дополнительные пожелания или вопросы" rows="4"></textarea>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" required>
-                                <span class="checkmark"></span>
-                                Согласен с <a href="#" class="privacy-link">политикой конфиденциальности</a>
-                            </label>
-                        </div>
-                        <button type="submit" class="btn-primary full-width">Записаться на пробное занятие</button>
-                    </form>
+                    <form id="trial-form" action="https://getform.io/f/ajjrdlea" method="POST" enctype="multipart/form-data">
+  <div class="form-row">
+    <div class="form-group half">
+      <input type="text" name="childName" placeholder="Имя ребенка" required>
+    </div>
+    <div class="form-group half">
+      <input type="number" name="childAge" placeholder="Возраст ребенка" min="3" max="18" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group half">
+      <input type="text" name="parentName" placeholder="Имя родителя" required>
+    </div>
+    <div class="form-group half">
+      <input type="tel" name="phone" placeholder="Телефон" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="email" name="email" placeholder="Email (необязательно)">
+  </div>
+  <div class="form-group">
+    <select name="program" required>
+      <option value="">Выберите программу</option>
+      <option value="drawing-3">Рисование для малышей (3-6 лет)</option>
+      <option value="sculpting-3">Лепка для малышей (3-6 лет)</option>
+      <option value="drawing-school">Рисование для школьников (7-12 лет)</option>
+      <option value="sculpting-school">Лепка для школьников (7-12 лет)</option>
+      <option value="advanced">Для старшеклассников (13-17 лет)</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <select name="preferredTime">
+      <option value="">Удобное время (необязательно)</option>
+      <option value="morning">Утром (10:00-12:00)</option>
+      <option value="afternoon">Днем (14:00-16:00)</option>
+      <option value="evening">Вечером (17:00-19:00)</option>
+      <option value="weekend">Выходные</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <textarea name="comments" placeholder="Дополнительные пожелания или вопросы" rows="4"></textarea>
+  </div>
+  <div class="form-group checkbox-group">
+    <label class="checkbox-label">
+      <input type="checkbox" name="privacy" required>
+      <span class="checkmark"></span>
+      Согласен с <a href="#" class="privacy-link">политикой конфиденциальности</a>
+    </label>
+  </div>
+  <button type="submit" class="btn-primary full-width">Записаться на пробное занятие</button>
+</form>
+
                 </div>
             </div>
         </div>
