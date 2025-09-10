@@ -69,8 +69,8 @@ body {
     /* padding: 80px 0; */
 
     /* задаём минимальную высоту */
-    min-height: 60vh;      /* 60% от высоты окна */
-    height: 1000;          /* разрешаем истинную высоту по содержимому */
+    min-height: 80vh;      /* 60% от высоты окна */
+    height: auto;          /* разрешаем истинную высоту по содержимому */
 
     background: url("IMG/header-bg.jpg") center center / cover no-repeat;
     color: white;
