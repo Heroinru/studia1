@@ -954,3 +954,9 @@ body {
         display: flex !important;
     }
 }
+/* Убираем отступ у секции hero */
+.hero {
+    margin-top: 0;       /* вместо прежних 80px */
+    padding-top: 80px;   /* высота фиксированного хедера */
+    background-position: top center; /* фон начинается сверху */
+}
