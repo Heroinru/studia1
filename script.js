@@ -13,29 +13,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const createMobileMenu = () => {
     const nav = document.querySelector('.nav');
     const navUl = nav.querySelector('ul');
-
     const burger = document.createElement('div');
     burger.className = 'burger';
     burger.innerHTML = `<span></span><span></span><span></span>`;
-
-    const style = document.createElement('style');
-    style.textContent = `
-        .burger { display: none; flex-direction: column; cursor: pointer; padding: 5px; }
-        .burger span { width: 25px; height: 3px; background: #333; margin: 3px 0; transition: 0.3s; border-radius: 2px; }
-        .burger.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-        .burger.active span:nth-child(2) { opacity: 0; }
-        .burger.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-        @media (max-width: 768px) {
-            .burger { display: flex; }
-            .nav ul {
-                position: fixed; top: 100%; left: 0; width: 100%; background: white;
-                flex-direction: column; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                transform: translateY(-100vh); transition: transform 0.3s;
-            }
-            .nav ul.active { transform: translateY(0); }
-        }
-    `;
-    document.head.appendChild(style);
     nav.appendChild(burger);
 
     burger.addEventListener('click', () => {
@@ -90,17 +70,14 @@ const showNotification = (message, type = 'info') => {
         `;
         document.body.appendChild(container);
     }
-
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
-
     const colors = {
         success: { bg: '#4CAF50', color: '#fff' },
         error: { bg: '#f44336', color: '#fff' },
         info: { bg: '#2196F3', color: '#fff' }
     };
-
     notification.style.cssText = `
         background: ${colors[type].bg};
         color: ${colors[type].color};
@@ -113,14 +90,12 @@ const showNotification = (message, type = 'info') => {
         max-width: 350px;
         word-wrap: break-word;
     `;
-
     container.appendChild(notification);
-
     setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 100);
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => {
-            if (notification.parentNode) notification.parentNode.removeChild(notification);
+            notification.remove();
         }, 300);
     }, 5000);
 };
@@ -130,58 +105,46 @@ class GalleryCarousel {
     constructor() {
         this.carousel = document.querySelector('.gallery-carousel');
         if (!this.carousel) return;
-
         this.track = this.carousel.querySelector('.carousel-track');
         this.items = this.carousel.querySelectorAll('.gallery-item');
         this.prevBtn = this.carousel.querySelector('.carousel-btn-prev');
         this.nextBtn = this.carousel.querySelector('.carousel-btn-next');
         this.indicators = this.carousel.querySelectorAll('.indicator');
-
         this.currentSlide = 0;
         this.totalSlides = this.items.length;
         this.autoplayInterval = null;
-
         this.init();
     }
-
     init() {
         if (!this.track || this.totalSlides === 0) return;
-
         this.prevBtn?.addEventListener('click', () => this.prevSlide());
         this.nextBtn?.addEventListener('click', () => this.nextSlide());
-
         this.indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => this.goToSlide(index));
         });
-
         this.startAutoplay();
         this.updateCarousel();
     }
-
     prevSlide() {
         this.currentSlide = this.currentSlide === 0 ? this.totalSlides - 1 : this.currentSlide - 1;
         this.updateCarousel();
     }
-
     nextSlide() {
         this.currentSlide = this.currentSlide === this.totalSlides - 1 ? 0 : this.currentSlide + 1;
         this.updateCarousel();
     }
-
     goToSlide(index) {
         if (index >= 0 && index < this.totalSlides) {
             this.currentSlide = index;
             this.updateCarousel();
         }
     }
-
     updateCarousel() {
         this.track.style.transform = `translateX(-${this.currentSlide * 100}%)`;
         this.indicators.forEach((indicator, index) => {
             indicator.classList.toggle('active', index === this.currentSlide);
         });
     }
-
     startAutoplay() {
         this.autoplayInterval = setInterval(() => {
             this.nextSlide();
@@ -199,176 +162,102 @@ class YandexMapIntegration {
         this.mapLoaded = false;
         this.init();
     }
-
     init() {
         if (!this.mapContainer) return;
-
-        this.loadButton?.addEventListener('click', () => {
-            this.loadYandexMaps();
-        });
-
-        // Автозагрузка карты через 2 секунды
+        this.loadButton?.addEventListener('click', () => this.loadYandexMaps());
         setTimeout(() => this.loadYandexMaps(), 2000);
     }
-
     loadYandexMaps() {
         if (this.mapLoaded) return;
         this.mapLoaded = true;
-
         if (this.fallback) {
-            this.fallback.innerHTML = `
-                <p>Карта загружается...</p>
-                <div style="width: 32px; height: 32px; border: 3px solid #ff6b6b; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
-            `;
+            this.fallback.innerHTML = '<p>Карта загружается...</p>';
         }
-
         const script = document.createElement('script');
-        script.src = 'https://api-maps.yandex.ru/2.1/?apikey=&lang=ru_RU';
+        script.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
         script.async = true;
-
         script.onload = () => {
             window.ymaps.ready(() => {
-                try {
-                    const map = new window.ymaps.Map(this.mapContainer, {
-                        center: this.coordinates,
-                        zoom: 16,
-                        controls: ['zoomControl']
-                    });
-
-                    const placemark = new window.ymaps.Placemark(this.coordinates, {
-                        balloonContent: 'Детская Изостудия<br>Творческое развитие детей'
-                    });
-
-                    map.geoObjects.add(placemark);
-
-                    if (this.fallback) {
-                        this.fallback.style.display = 'none';
-                    }
-                } catch (error) {
-                    console.error('Ошибка загрузки карты:', error);
-                }
+                const map = new ymaps.Map(this.mapContainer, {
+                    center: this.coordinates,
+                    zoom: 16,
+                    controls: ['zoomControl']
+                });
+                const placemark = new ymaps.Placemark(this.coordinates, {
+                    balloonContent: 'Детская Изостудия<br>Творческое развитие детей'
+                });
+                map.geoObjects.add(placemark);
+                if (this.fallback) this.fallback.style.display = 'none';
             });
         };
-
         script.onerror = () => {
             if (this.fallback) {
-                this.fallback.innerHTML = `
-                    <p>❌ Не удалось загрузить карту</p>
-                    <button class="btn-map" onclick="window.open('https://yandex.ru/maps/', '_blank')">
-                        Открыть в Яндекс.Картах
-                    </button>
-                `;
+                this.fallback.innerHTML = '<p>❌ Не удалось загрузить карту</p>';
             }
         };
-
         document.head.appendChild(script);
     }
 }
 
-// Простая обработка формы с минимальной валидацией
+// Обработка формы с минимальной валидацией
 class ContactFormHandler {
     constructor() {
         this.form = document.querySelector('.contact-form form');
         if (this.form) this.init();
     }
-
     init() {
         this.form.addEventListener('submit', e => this.handleSubmit(e));
-
-        // Убираем красные границы при вводе
         this.form.querySelectorAll('input, select, textarea').forEach(field => {
             field.addEventListener('input', () => {
                 field.style.borderColor = '#e0e0e0';
-                const error = field.parentNode.querySelector('.field-error');
-                if (error) error.remove();
+                const err = field.parentNode.querySelector('.field-error');
+                if (err) err.remove();
             });
         });
     }
-
     handleSubmit(e) {
         e.preventDefault();
-
-        // Минимальная проверка только обязательных полей
         if (!this.validateRequiredFields()) {
             showNotification('Пожалуйста, заполните все обязательные поля', 'error');
             return;
         }
-
         showNotification('Отправляем заявку...', 'info');
-
-        // Отправляем форму на Getform
-        setTimeout(() => {
-            this.form.submit();
-        }, 500);
+        setTimeout(() => this.form.submit(), 500);
     }
-
     validateRequiredFields() {
-        let isValid = true;
-
+        let valid = true;
         this.form.querySelectorAll('[required]').forEach(field => {
-            const value = field.value.trim();
-
-            if (!value) {
-                this.showFieldError(field, 'Заполните это поле');
-                isValid = false;
+            const v = field.value.trim();
+            if (!v) {
+                this.showError(field, 'Заполните это поле');
+                valid = false;
+            } else if (field.type === 'email' && !v.includes('@')) {
+                this.showError(field, 'Введите корректный email');
+                valid = false;
+            } else if (field.type === 'tel' && v.length < 10) {
+                this.showError(field, 'Введите номер телефона');
+                valid = false;
             } else {
-                // Только базовые проверки
-                if (field.type === 'email' && !value.includes('@')) {
-                    this.showFieldError(field, 'Введите email с символом @');
-                    isValid = false;
-                } else if (field.type === 'tel' && value.length < 10) {
-                    this.showFieldError(field, 'Введите номер телефона');
-                    isValid = false;
-                } else if (field.type === 'number') {
-                    const age = parseInt(value);
-                    if (age < 3 || age > 18) {
-                        this.showFieldError(field, 'Возраст от 3 до 18 лет');
-                        isValid = false;
-                    }
-                } else {
-                    field.style.borderColor = '#4CAF50';
-                }
+                field.style.borderColor = '#4CAF50';
             }
         });
-
-        return isValid;
+        return valid;
     }
-
-    showFieldError(field, message) {
-        const oldError = field.parentNode.querySelector('.field-error');
-        if (oldError) oldError.remove();
-
+    showError(field, msg) {
         field.style.borderColor = '#f44336';
-
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'field-error';
-        errorDiv.textContent = message;
-        errorDiv.style.cssText = `
-            color: #f44336;
-            font-size: 12px;
-            margin-top: 5px;
-        `;
-
-        field.parentNode.appendChild(errorDiv);
+        const div = document.createElement('div');
+        div.className = 'field-error';
+        div.textContent = msg;
+        div.style.cssText = 'color:#f44336;font-size:12px;margin-top:5px;';
+        field.parentNode.appendChild(div);
     }
 }
 
-// Инициализация при загрузке страницы
+// Инициализация функций
 document.addEventListener('DOMContentLoaded', () => {
     createMobileMenu();
     observeElements();
     new GalleryCarousel();
     new YandexMapIntegration();
     new ContactFormHandler();
-
-    console.log('Сайт изостудии загружен успешно!');
 });
-
-// Добавляем стили для анимации спиннера
-const spinStyle = document.createElement('style');
-spinStyle.textContent = `
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-`;
-document.head.appendChild(spinStyle);
