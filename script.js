@@ -18,13 +18,11 @@ const createMobileMenu = () => {
     burger.innerHTML = `<span></span><span></span><span></span>`;
     nav.appendChild(burger);
 
-    // Клик по бургеру — переключаем меню
     burger.addEventListener('click', () => {
         burger.classList.toggle('active');
         navUl.classList.toggle('active');
     });
 
-    // Закрытие меню при клике по ссылке
     navUl.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             burger.classList.remove('active');
@@ -66,9 +64,7 @@ const showNotification = (message, type = 'info') => {
     if (!container) {
         container = document.createElement('div');
         container.className = 'notifications';
-        container.style.cssText = `
-            position: fixed; top: 20px; right: 20px; z-index: 10000;
-        `;
+        container.style.cssText = 'position:fixed;top:20px;right:20px;z-index:10000;';
         document.body.appendChild(container);
     }
     const notification = document.createElement('div');
@@ -76,21 +72,21 @@ const showNotification = (message, type = 'info') => {
     notification.textContent = message;
     const colors = {
         success: { bg: '#4CAF50', color: '#fff' },
-        error: { bg: '#f44336', color: '#fff' },
-        info: { bg: '#2196F3', color: '#fff' }
+        error:   { bg: '#f44336', color: '#fff' },
+        info:    { bg: '#2196F3', color: '#fff' }
     };
-    notification.style.cssText = `
-        background: ${colors[type].bg};
-        color: ${colors[type].color};
-        padding: 15px 20px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        max-width: 350px;
-        word-wrap: break-word;
-    `;
+    Object.assign(notification.style, {
+        background: colors[type].bg,
+        color: colors[type].color,
+        padding: '15px 20px',
+        borderRadius: '5px',
+        marginBottom: '10px',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+        transform: 'translateX(100%)',
+        transition: 'transform 0.3s ease',
+        maxWidth: '350px',
+        wordWrap: 'break-word'
+    });
     container.appendChild(notification);
     setTimeout(() => notification.style.transform = 'translateX(0)', 100);
     setTimeout(() => {
@@ -99,37 +95,45 @@ const showNotification = (message, type = 'info') => {
     }, 5000);
 };
 
-// Карусель галереи (упрощенная версия)
+// Карусель галереи, работает для любого количества .gallery-carousel
 class GalleryCarousel {
-    constructor() {
-        this.carousel = document.querySelector('.gallery-carousel');
-        if (!this.carousel) return;
-        this.track = this.carousel.querySelector('.carousel-track');
-        this.items = this.carousel.querySelectorAll('.gallery-item');
-        this.prevBtn = this.carousel.querySelector('.carousel-btn-prev');
-        this.nextBtn = this.carousel.querySelector('.carousel-btn-next');
-        this.indicators = this.carousel.querySelectorAll('.indicator');
+    constructor(root) {
+        this.carousel = root;
+        this.track = root.querySelector('.carousel-track');
+        this.items = root.querySelectorAll('.gallery-item');
+        this.prevBtn = root.querySelector('.carousel-btn-prev');
+        this.nextBtn = root.querySelector('.carousel-btn-next');
+        this.indicators = root.querySelectorAll('.indicator');
         this.currentSlide = 0;
         this.totalSlides = this.items.length;
-        this.autoplayInterval = null;
+        if (this.totalSlides === 0) return;
         this.init();
     }
     init() {
-        if (!this.track || this.totalSlides === 0) return;
-        this.prevBtn?.addEventListener('click', () => this.prevSlide());
-        this.nextBtn?.addEventListener('click', () => this.nextSlide());
-        this.indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => this.goToSlide(index));
-        });
-        this.startAutoplay();
         this.updateCarousel();
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        this.indicators.forEach((ind, i) => {
+            ind.addEventListener('click', () => this.goToSlide(i));
+        });
+        this.autoplayInterval = setInterval(() => this.nextSlide(), 5000);
+    }
+    updateCarousel() {
+        this.track.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+        this.indicators.forEach((ind, i) => {
+            ind.classList.toggle('active', i === this.currentSlide);
+        });
     }
     prevSlide() {
-        this.currentSlide = this.currentSlide === 0 ? this.totalSlides - 1 : this.currentSlide - 1;
+        this.currentSlide = this.currentSlide === 0 
+            ? this.totalSlides - 1 
+            : this.currentSlide - 1;
         this.updateCarousel();
     }
     nextSlide() {
-        this.currentSlide = this.currentSlide === this.totalSlides - 1 ? 0 : this.currentSlide + 1;
+        this.currentSlide = this.currentSlide === this.totalSlides - 1 
+            ? 0 
+            : this.currentSlide + 1;
         this.updateCarousel();
     }
     goToSlide(index) {
@@ -137,15 +141,6 @@ class GalleryCarousel {
             this.currentSlide = index;
             this.updateCarousel();
         }
-    }
-    updateCarousel() {
-        this.track.style.transform = `translateX(-${this.currentSlide * 100}%)`;
-        this.indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === this.currentSlide);
-        });
-    }
-    startAutoplay() {
-        this.autoplayInterval = setInterval(() => this.nextSlide(), 5000);
     }
 }
 
@@ -156,36 +151,27 @@ class YandexMapIntegration {
         this.fallback = document.querySelector('.map-fallback');
         this.loadButton = document.getElementById('load-map-btn');
         this.coordinates = [55.688209, 37.296337];
-        this.mapLoaded = false;
-        this.init();
-    }
-    init() {
         if (!this.mapContainer) return;
         this.loadButton?.addEventListener('click', () => this.loadYandexMaps());
         setTimeout(() => this.loadYandexMaps(), 2000);
     }
     loadYandexMaps() {
-        if (this.mapLoaded) return;
-        this.mapLoaded = true;
-        if (this.fallback) this.fallback.innerHTML = '<p>Карта загружается...</p>';
+        if (this.loaded) return;
+        this.loaded = true;
+        if (this.fallback) this.fallback.textContent = 'Карта загружается...';
         const script = document.createElement('script');
         script.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
         script.async = true;
         script.onload = () => ymaps.ready(() => {
             const map = new ymaps.Map(this.mapContainer, {
-                center: this.coordinates,
-                zoom: 16,
-                controls: ['zoomControl']
+                center: this.coordinates, zoom: 16
             });
-            const placemark = new ymaps.Placemark(this.coordinates, {
-                balloonContent: 'Детская Изостудия<br>Творческое развитие детей'
-            });
-            map.geoObjects.add(placemark);
-            if (this.fallback) this.fallback.style.display = 'none';
+            map.geoObjects.add(new ymaps.Placemark(
+                this.coordinates,
+                { balloonContent: 'Детская Изостудия<br>Творческое развитие детей' }
+            ));
+            this.fallback.style.display = 'none';
         });
-        script.onerror = () => {
-            if (this.fallback) this.fallback.innerHTML = '<p>❌ Не удалось загрузить карту</p>';
-        };
         document.head.appendChild(script);
     }
 }
@@ -194,60 +180,52 @@ class YandexMapIntegration {
 class ContactFormHandler {
     constructor() {
         this.form = document.querySelector('.contact-form form');
-        if (this.form) this.init();
-    }
-    init() {
+        if (!this.form) return;
         this.form.addEventListener('submit', e => this.handleSubmit(e));
-        this.form.querySelectorAll('input, select, textarea').forEach(field => {
-            field.addEventListener('input', () => {
-                field.style.borderColor = '#e0e0e0';
-                field.parentNode.querySelector('.field-error')?.remove();
-            });
-        });
+        this.form.querySelectorAll('input, select, textarea')
+            .forEach(f => f.addEventListener('input', () => {
+                f.style.borderColor = '';
+                f.parentNode.querySelector('.field-error')?.remove();
+            }));
     }
     handleSubmit(e) {
         e.preventDefault();
-        if (!this.validateRequiredFields()) {
+        if (!this.validate()) {
             showNotification('Пожалуйста, заполните все обязательные поля', 'error');
             return;
         }
         showNotification('Отправляем заявку...', 'info');
         setTimeout(() => this.form.submit(), 500);
     }
-    validateRequiredFields() {
-        let valid = true;
-        this.form.querySelectorAll('[required]').forEach(field => {
-            const v = field.value.trim();
-            if (!v) {
-                this.showError(field, 'Заполните это поле');
-                valid = false;
-            } else if (field.type === 'email' && !v.includes('@')) {
-                this.showError(field, 'Введите корректный email');
-                valid = false;
-            } else if (field.type === 'tel' && v.length < 10) {
-                this.showError(field, 'Введите номер телефона');
-                valid = false;
+    validate() {
+        let ok = true;
+        this.form.querySelectorAll('[required]').forEach(f => {
+            const v = f.value.trim();
+            if (!v || (f.type === 'email' && !v.includes('@')) || (f.type === 'tel' && v.length < 10)) {
+                this.showError(f, 'Введите корректное значение');
+                ok = false;
             } else {
-                field.style.borderColor = '#4CAF50';
+                f.style.borderColor = '#4CAF50';
             }
         });
-        return valid;
+        return ok;
     }
-    showError(field, msg) {
-        field.style.borderColor = '#f44336';
-        const div = document.createElement('div');
-        div.className = 'field-error';
-        div.textContent = msg;
-        div.style.cssText = 'color:#f44336;font-size:12px;margin-top:5px;';
-        field.parentNode.appendChild(div);
+    showError(f, msg) {
+        f.style.borderColor = '#f44336';
+        const d = document.createElement('div');
+        d.className = 'field-error';
+        d.textContent = msg;
+        d.style.cssText = 'color:#f44336;font-size:12px;margin-top:5px;';
+        f.parentNode.appendChild(d);
     }
 }
 
-// Инициализация при загрузке страницы
+// Инициализация
 document.addEventListener('DOMContentLoaded', () => {
     createMobileMenu();
     observeElements();
-    new GalleryCarousel();
+    document.querySelectorAll('.gallery-carousel')
+        .forEach(node => new GalleryCarousel(node));
     new YandexMapIntegration();
     new ContactFormHandler();
 });
