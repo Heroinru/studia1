@@ -872,3 +872,26 @@ body {
         transform: translateY(0);
     }
 }
+@media (max-width: 768px) {
+    /* Скрываем меню по умолчанию */
+    .nav ul {
+        display: none !important;
+        position: fixed;
+        top: 60px; /* под шапкой */
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transform: translateY(0);
+    }
+    /* Показываем меню только при классе active */
+    .nav ul.active {
+        display: flex !important;
+    }
+    /* Убираем прежние transform-настройки */
+    .nav ul {
+        transform: none !important;
+    }
+}
