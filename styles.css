@@ -1,4 +1,63 @@
 /* Общие стили */
+/* Стили для бургер-иконки */
+.burger {
+    display: none;           /* скрыта по умолчанию */
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;           /* над шапкой */
+}
+.burger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.burger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+.burger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Показ бургер-меню на мобильных */
+@media (max-width: 768px) {
+    .burger {
+        display: flex;
+    }
+    /* Скрываем обычное горизонтальное меню */
+    .nav ul {
+        display: none !important;
+    }
+    /* Показываем мобильное меню, когда добавлен класс active */
+    .nav ul.active {
+        display: flex !important;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+}
+
+/* Стили для десктопного меню (чтобы ul отображался по умолчанию на больших экранах) */
+@media (min-width: 769px) {
+    .nav ul {
+        display: flex !important;
+        list-style: none;
+        gap: 30px;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
