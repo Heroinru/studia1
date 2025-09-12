@@ -148,42 +148,98 @@
 
    
 
-    <!-- Секция «Галлерея» -->
-<section id="masterclasses" class="programs">
-  <div class="container">
-    <h2 class="section-title">Галлерея</h2>
-    <p class="section-text">
-      Работы наших учеников
-    </p>
-    <div class="gallery-carousel">
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <!-- 8 элементов карусели -->
-          <div class="gallery-item"><img src="IMG/mc1.jpg" alt="Рисунок 1"></div>
-          <div class="gallery-item"><img src="IMG/mc2.jpg" alt="Рисунок 2"></div>
-          <div class="gallery-item"><img src="IMG/mc3.jpg" alt="Рисунок 3"></div>
-          <div class="gallery-item"><img src="IMG/mc4.jpg" alt="Рисунок 4"></div>
-          <div class="gallery-item"><img src="IMG/mc5.jpg" alt="Рисунок 5"></div>
-          <div class="gallery-item"><img src="IMG/mc6.jpg" alt="Рисунок 6"></div>
-          <div class="gallery-item"><img src="IMG/mc7.jpg" alt="Рисунок 7"></div>
-          <div class="gallery-item"><img src="IMG/mc8.jpg" alt="Рисунок 8"></div>
+   <!-- Секция галереи с каруселью -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Галерея работ</h2>
+            <div class="gallery-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="gallery-item">
+                            <img src="IMG/work1.jpg" alt="Работа ученика 1">
+                            <div class="gallery-overlay">
+                                <h4>Рисунок акварелью</h4>
+                                <p>Маша, 7 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work2.jpg" alt="Работа ученика 2">
+                            <div class="gallery-overlay">
+                                <h4>Пластилиновая скульптура</h4>
+                                <p>Артем, 5 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work3.jpg" alt="Работа ученика 3">
+                            <div class="gallery-overlay">
+                                <h4>Гуашь, портрет</h4>
+                                <p>Соня, 10 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work4.jpg" alt="Работа ученика 4">
+                            <div class="gallery-overlay">
+                                <h4>Карандашный рисунок</h4>
+                                <p>Данил, 12 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work5.jpg" alt="Работа ученика 5">
+                            <div class="gallery-overlay">
+                                <h4>Пастель, пейзаж</h4>
+                                <p>Лена, 14 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work6.jpg" alt="Работа ученика 6">
+                            <div class="gallery-overlay">
+                                <h4>Масляная живопись</h4>
+                                <p>Максим, 16 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work7.jpg" alt="Работа ученика 7">
+                            <div class="gallery-overlay">
+                                <h4>Коллаж</h4>
+                                <p>Алиса, 8 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="IMG/work8.jpg" alt="Работа ученика 8">
+                            <div class="gallery-overlay">
+                                <h4>Глиняная работа</h4>
+                                <p>Никита, 9 лет</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопки навигации -->
+                <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущий слайд">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="carousel-btn carousel-btn-next" aria-label="Следующий слайд">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+
+                <!-- Индикаторы -->
+                <div class="carousel-indicators">
+                    <button class="indicator active" data-slide="0"></button>
+                    <button class="indicator" data-slide="1"></button>
+                    <button class="indicator" data-slide="2"></button>
+                    <button class="indicator" data-slide="3"></button>
+                    <button class="indicator" data-slide="4"></button>
+                    <button class="indicator" data-slide="5"></button>
+                    <button class="indicator" data-slide="6"></button>
+                    <button class="indicator" data-slide="7"></button>
+                </div>
+            </div>
         </div>
-      </div>
-      <button class="carousel-btn carousel-btn-prev" aria-label="Назад">❮</button>
-      <button class="carousel-btn carousel-btn-next" aria-label="Вперед">❯</button>
-      <div class="carousel-indicators">
-        <button class="indicator active" data-slide="0"></button>
-        <button class="indicator" data-slide="1"></button>
-        <button class="indicator" data-slide="2"></button>
-        <button class="indicator" data-slide="3"></button>
-        <button class="indicator" data-slide="4"></button>
-        <button class="indicator" data-slide="5"></button>
-        <button class="indicator" data-slide="6"></button>
-        <button class="indicator" data-slide="7"></button>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
 
