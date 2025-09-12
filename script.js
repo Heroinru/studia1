@@ -1,13 +1,29 @@
 // Плавная прокрутка по якорным ссылкам
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const href = this.getAttribute('href');
+        // Обрабатываем все ссылки, но для “Галереи” будем скроллить к #gallery
+        if (href === '#masterclasses') {
+            e.preventDefault();
+            const target = document.getElementById('gallery');
+            if (target) {
+                const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+                const offset = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+            }
+        } else {
+            // Обычные якорные ссылки работают как раньше
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+                const offset = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+            }
         }
     });
 });
+
 
 // Показ/скрытие мобильного меню
 const createMobileMenu = () => {
