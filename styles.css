@@ -260,10 +260,26 @@ body {
 /* О нас */
 #about {
   background-color: #F0F4C3;
-}
+  }
 
 .about {
     padding: 100px 0;
+}
+#about .container {
+    background-color: #Ffffff;    /* светлый фон только внутри контейнера */
+    padding: 40px 20px;          /* вертикальные и боковые отступы */
+    border-radius: 20px;          /* скругление для аккуратности */
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06); /* легкая тень как у карточки */
+    max-width: 1200px;            /* ширина не больше программ */
+    margin: 0 auto;               /* по центру */
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    #about .container {
+        padding: 25px 20px;;
+        border-radius: 10px;
+    }
 }
 .about-content {
     display: grid;
@@ -303,7 +319,7 @@ body {
 /* Галерея с каруселью */
 .gallery {
     padding: 100px 0;
-    background: #FFF4E6 ;
+    background: #FFFfff ;
     overflow: hidden;
 }
 .gallery-carousel {
