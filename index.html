@@ -1,633 +1,493 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Детская Изостудия – Творческое развитие детей</title>
-  <meta name="description" content="Детская изостудия в Москве. Рисование и лепка для детей от 3 лет. Профессиональные преподаватели, современные материалы.">
-  <meta name="keywords" content="изостудия, рисование для детей, лепка, творчество, Москва">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ИЗОСТУДИЯ - Творческое развитие в Одинцово</title>
+    <meta name="description" content="Изостудия в Одинцово для детей от 5 лет. Рисование, живопись маслом, подготовка к поступлению в творческие вузы. Опытные преподаватели." />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles-new.css" />
 </head>
 <body>
-  <!-- Хедер с навигацией -->
-  <header class="header">
-    <div class="container">
-      <div class="logo">
-        <h1></h1>
-        <p>Художественное образование и творческое развитие детей и взрослых</p>
-      </div>
-      <nav class="nav">
-        <ul>
-          <li><a href="#home">Главная</a></li>
-          <li><a href="#about">О нас</a></li>
-          <li><a href="#programs">Программы</a></li>
-          <li><a href="#gallery">Галерея</a></li>
-          <li><a href="#masterclasses">Мастер-классы</a></li>
-          <li><a href="#contact">Контакты</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-palette"></i> ИЗОСТУДИЯ</h1>
+                <p>Разноцветные истории</p>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#hero">Главная</a></li>
+                    <li><a href="#about">О студии</a></li>
+                    <li><a href="#programs">Программы</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+                <div class="burger" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Главная секция -->
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="hero-text-center">
-        <h1>ИЗОСТУДИЯ</h1>
-        <h2>РАЗНОЦВЕТНЫЕ ИСТОРИИ</h2>
-        <p>г. Одинцово  ул. Говорова 28</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Секция "О нас" -->
-<section id="about" class="about">
-   <h2 class="section-title">О нашей студии</h2> 
-<div class="container">
-       
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Почему выбирают нас?</h3>
-                <p>На занятиях в нашей студии вы имеете возможность научиться рисовать с нуля, изучить различные методики рисунка и живописи, освоить широкий спектр материалов, подготовиться к вступительным экзаменам в профильные учебные заведения и получить квалифицированную консультацию психолога</p>
-                <div class="about-features">
-                    <div class="feature">
-                        <h4>Опытные преподаватели</h4>
-                        <p>Наши педагоги имеют художественное образование и большой опыт работы с детьми</p>
-                    </div>
-                    <div class="feature">
-                        <h4>Индивидуальный подход</h4>
-                        <p>К каждому ребенку мы находим особый подход, учитывая возраст и способности</p>
-                    </div>
-                    <div class="feature">
-                        <h4></h4>
-                        <p></p>
-                    </div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-gradient"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Откройте мир <span class="gradient-text">творчества</span></h1>
+                <h2 class="hero-subtitle">Изостудия для детей от 5 лет</h2>
+                <p class="hero-description">
+                    Профессиональное художественное образование в Одинцово. Развиваем талант, готовим к поступлению в творческие вузы.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paint-brush"></i> Записаться на пробное занятие
+                    </a>
+                    <a href="#gallery" class="btn btn-outline">
+                        <i class="fas fa-images"></i> Посмотреть работы
+                    </a>
                 </div>
             </div>
-            
-            <!-- Карусель фотографий студии -->
-            <div class="about-image">
-                <div class="gallery-carousel about-carousel">
-                    <div class="carousel-container">
-                        <div class="carousel-track">
-                            <div class="gallery-item">
-                                <img src="IMG/studio-interior1.jpg" alt="Интерьер студии">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="IMG/studio-interior2.jpg" alt="Занятия в студии">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="IMG/studio-interior3.jpg" alt="Материалы для творчества">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="IMG/studio-interior4.jpg" alt="Рабочее место">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="IMG/studio-interior5.jpg" alt="Интерьер студии">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="IMG/studio-interior6.jpg" alt="Интерьер студии">
-                            </div>      
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">лет опыта</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">учеников</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">поступлений в вузы</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нашей студии</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-highlight">
+                        <h3>Почему родители выбирают нас?</h3>
+                        <p>
+                            На занятиях в нашей студии дети имеют возможность научиться рисовать с нуля, изучить различные методики рисунка и живописи, освоить широкий спектр материалов. Мы также готовим к поступлению в творческие учебные заведения.
+                        </p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                            <h4>Опытные преподаватели</h4>
+                            <p>Наши педагоги имеют художественное образование и большой опыт работы с детьми</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-user-friends"></i></div>
+                            <h4>Индивидуальный подход</h4>
+                            <p>К каждому ребенку мы находим особый подход, учитывая возраст и способности</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <h4>Подготовка к поступлению</h4>
+                            <p>Помогаем поступить в МАРХИ, РАНХиГС, РЭУ им. Плеханова и другие творческие вузы</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                            <h4>Разнообразие техник</h4>
+                            <p>Акварель, масло, пастель, академический рисунок, композиция и многое другое</p>
                         </div>
                     </div>
-                    <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущее фото">❮</button>
-                    <button class="carousel-btn carousel-btn-next" aria-label="Следующее фото">❯</button>
-                    <div class="carousel-indicators">
-                        <button class="indicator active" data-slide="0"></button>
-                        <button class="indicator" data-slide="1"></button>
-                        <button class="indicator" data-slide="2"></button>
-                        <button class="indicator" data-slide="3"></button>
-                        <button class="indicator" data-slide="4"></button>
-                        <button class="indicator" data-slide="5"></button>
+                </div>
+                <div class="about-image">
+                    <img src="img/teacher.jpg" alt="Преподаватель изостудии" />
+                    <div class="image-decoration"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <h2 class="section-title">Наши программы</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="img/kids-drawing.jpg" alt="Дети рисуют" />
+                        <div class="program-badge">5-8 лет</div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Рисование для малышей</h3>
+                        <p>Путь в мир красок и искусства. Занятия, где дети учатся рисовать «с нуля», изучают различные техники рисунка и живописи.</p>
+                        <ul class="program-benefits">
+                            <li>Развитие мелкой моторики</li>
+                            <li>Изучение основ цветоведения</li>
+                            <li>Работа с различными материалами</li>
+                            <li>Развитие воображения и творческого мышления</li>
+                        </ul>
+                        <div class="program-price">
+                            <span class="price">от 2500₽</span>
+                            <span class="price-period">в месяц</span>
+                        </div>
+                        <button class="btn btn-program">Подробнее</button>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-  <!-- Секция "Наши программы" -->
-  <section id="programs" class="programs">
-    <div class="container">
-      <h2 class="section-title">Наши программы</h2>
-      <!-- Программа 1 -->
-      <div class="program-card">
-        <div class="program-image">
-          <div class="gallery-carousel about-carousel">
-            <div class="carousel-container">
-              <div class="carousel-track">
-                <div class="gallery-item">
-                  <img src="IMG/drawing-kids1.jpg" alt="Рисование для малышей 1">
+                <div class="program-card program-featured">
+                    <div class="program-image">
+                        <img src="img/oil-painting.jpg" alt="Живопись маслом" />
+                        <div class="program-badge">12+ лет</div>
+                        <div class="featured-badge">Популярно</div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Живопись маслом</h3>
+                        <p>
+                            Масляные краски предоставляют богатейшие выразительные возможности в передаче красоты и многообразия окружающего мира.
+                        </p>
+                        <ul class="program-benefits">
+                            <li>Профессиональные материалы и техники</li>
+                            <li>Изучение классических и современных методов</li>
+                            <li>Создание полноценных картин</li>
+                            <li>Подготовка к художественным конкурсам</li>
+                        </ul>
+                        <div class="program-price">
+                            <span class="price">от 4000₽</span>
+                            <span class="price-period">в месяц</span>
+                        </div>
+                        <button class="btn btn-program">Подробнее</button>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                  <img src="IMG/drawing-kids2.jpg" alt="Рисование для малышей 2">
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="img/academic-drawing.jpg" alt="Академический рисунок" />
+                        <div class="program-badge">8-16 лет</div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Рисунок и живопись</h3>
+                        <p>
+                            Адаптированная программа ДХШ. «Рисунок — источник и душа всех видов живописи» — Микеланджело.
+                        </p>
+                        <ul class="program-benefits">
+                            <li>Академические основы рисунка</li>
+                            <li>Изучение перспективы и композиции</li>
+                            <li>Работа с натуры</li>
+                            <li>Развитие наблюдательности</li>
+                        </ul>
+                        <div class="program-price">
+                            <span class="price">от 3000₽</span>
+                            <span class="price-period">в месяц</span>
+                        </div>
+                        <button class="btn btn-program">Подробнее</button>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                  <img src="IMG/drawing-kids3.jpg" alt="Рисование для малышей 3">
+
+                <div class="program-card program-premium">
+                    <div class="program-image">
+                        <img src="img/exam-prep.jpg" alt="Подготовка к поступлению"  />
+                        <div class="program-badge">15-18 лет</div>
+                        <div class="premium-badge">Интенсив</div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Подготовка к поступлению</h3>
+                        <p>Для тех, кто решил связать жизнь с творческой профессией. Готовим к вступительным экзаменам в творческие вузы.</p>
+                        <ul class="program-benefits">
+                            <li>Рисунок, живопись, композиция</li>
+                            <li>Подготовка портфолио</li>
+                            <li>Индивидуальные консультации</li>
+                            <li>95% успешных поступлений</li>
+                        </ul>
+                        <div class="program-price">
+                            <span class="price">от 6000₽</span>
+                            <span class="price-period">в месяц</span>
+                        </div>
+                        <button class="btn btn-program">Подробнее</button>
+                    </div>
                 </div>
-              <div class="gallery-item">
-                  <img src="IMG/drawing-kids4.jpg" alt="Рисование для малышей 4">
-                </div>
-             </div>
-            </div>
-            <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущее фото">❮</button>
-            <button class="carousel-btn carousel-btn-next" aria-label="Следующее фото">❯</button>
-            <div class="carousel-indicators">
-              <button class="indicator active" data-slide="0"></button>
-              <button class="indicator" data-slide="1"></button>
-              <button class="indicator" data-slide="2"></button>
-              <button class="indicator" data-slide="3"></button>
-            </div>
-          </div>
-        </div>
-        <div class="program-content">
-          <h3>РИСОВАНИЕ ДЛЯ ДЕТЕЙ ОТ 5 ЛЕТ</h3>
-          <p></p>
-          <ul class="program-benefits">
-            <li>Рисование для малышей это путь в мир красок и искусства, занятия, где дети учатся рисовать «с нуля», изучают различные техники  рисунка и живописи.</li>
-            <li>Изобразительная деятельность не только имеет неоценимое значение для разностороннего развития и воспитания ребенка, но и сама по себе значит для ребенка очень много.</li>
-            <li>Уровень развития изобразительной деятельности дошкольника является показателем его эстетического и интеллектуального развития.</li>
-          </ul>
-          <button class="btn-program">Подробнее</button>
-        </div>
-      </div>
-      <!-- Программа 2 -->
-      <div class="program-card reverse">
-        <div class="program-image">
-          <div class="gallery-carousel about-carousel">
-            <div class="carousel-container">
-              <div class="carousel-track">
-                <div class="gallery-item">
-                  <img src="IMG/oil-painting1.jpg" alt="Живопись маслом 1">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/oil-painting2.jpg" alt="Живопись маслом 2">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/oil-painting3.jpg" alt="Живопись маслом 3">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/oil-painting4.jpg" alt="Живопись маслом 3">
-                </div>
-              </div>
-            </div>
-            <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущее фото">❮</button>
-            <button class="carousel-btn carousel-btn-next" aria-label="Следующее фото">❯</button>
-            <div class="carousel-indicators">
-              <button class="indicator active" data-slide="0"></button>
-              <button class="indicator" data-slide="1"></button>
-              <button class="indicator" data-slide="2"></button>
-              <button class="indicator" data-slide="3"></button>
-            </div>
-          </div>
-        </div>
-        <div class="program-content">
-          <h3>ЖИВОПИСЬ МАСЛОМ</h3>
-          <p>Живопись масляными красками предоставляет художнику богатейшие выразительные возможности в передаче красоты и многообразия окружающего мира. Масляные краски, являясь гибким и пластичным материалом, позволяют бесконечно варьировать фактуру решений. Изменяя характер мазков, можно добиться различного звучания красок. Полученные знания и приобретённые навыки позволят художнику-новичку самостоятельно писать картины..</p>
-          <button class="btn-program">Подробнее</button>
-        </div>
-      </div>
-      <!-- Программа 3 -->
-      <div class="program-card">
-        <div class="program-image">
-          <div class="gallery-carousel about-carousel">
-            <div class="carousel-container">
-              <div class="carousel-track">
-                <div class="gallery-item">
-                  <img src="IMG/art-school1.jpg" alt="Рисунок и живопись 1">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school2.jpg" alt="Рисунок и живопись 2">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school3.jpg" alt="Рисунок и живопись 3">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school4.jpg" alt="Рисунок и живопись 1">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school5.jpg" alt="Рисунок и живопись 2">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school6.jpg" alt="Рисунок и живопись 3">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school7.jpg" alt="Рисунок и живопись 1">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school8.jpg" alt="Рисунок и живопись 2">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school9.jpg" alt="Рисунок и живопись 3">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school10.jpg" alt="Рисунок и живопись 1">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school11.jpg" alt="Рисунок и живопись 2">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/art-school12.jpg" alt="Рисунок и живопись 3">
-                </div>
-              </div>
-            </div>
-            <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущее фото">❮</button>
-            <button class="carousel-btn carousel-btn-next" aria-label="Следующее фото">❯</button>
-            <div class="carousel-indicators">
-              <button class="indicator active" data-slide="0"></button>
-              <button class="indicator" data-slide="1"></button>
-              <button class="indicator" data-slide="2"></button>
-              <button class="indicator" data-slide="3"></button>
-              <button class="indicator" data-slide="4"></button>
-              <button class="indicator" data-slide="5"></button>
-              <button class="indicator" data-slide="6"></button>
-              <button class="indicator" data-slide="7"></button>
-              <button class="indicator" data-slide="8"></button>
-              <button class="indicator" data-slide="9"></button>
-              <button class="indicator" data-slide="10"></button>
-              <button class="indicator" data-slide="11"></button>
-            </div>
-          </div>
-        </div>
-        <div class="program-content">
-          <h3>РИСУНОК И ЖИВОПИСЬ по адаптированной программе ДХШ</h3>
-          <p>«Рисунок, который иначе называют искусством наброска, есть высшая точка и живописи, и скульптуры, и архитектуры; рисунок является источником и душой всех видов живописи и корнем всей науки» - Микеланджело.
-Любому начинающему художнику необходимо обладать минимальными теоретическими знаниями о технике и композиции рисунка и живописи, последовательности работы над ними, особенностями изображения предметов и передачи пространства.
-Полученные знания и приобретённые навыки позволят начинающему  художнику самостоятельно решать поставленные перед ним задачи.
-На уроках ИЗО мы осваиваем в первую очередь его Величество РИСУНОК!</p>
-          
-          <button class="btn-program">Подробнее</button>
-        </div>
-      </div>
-      <!-- Программа 4 -->
-      <!-- Программа 4: Подготовка к поступлению -->
-<div class="program-card reverse">
-  <div class="program-image">
-    <div class="gallery-carousel about-carousel">
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <div class="gallery-item"><img src="IMG/preparation1.jpg" alt="Подготовка к поступлению 1"></div>
-          <div class="gallery-item"><img src="IMG/preparation2.jpg" alt="Подготовка к поступлению 2"></div>
-          <div class="gallery-item"><img src="IMG/preparation3.jpg" alt="Подготовка к поступлению 3"></div>
-          <div class="gallery-item"><img src="IMG/preparation4.jpg" alt="Подготовка к поступлению 4"></div>
-          <div class="gallery-item"><img src="IMG/preparation5.jpg" alt="Подготовка к поступлению 5"></div>
-          <div class="gallery-item"><img src="IMG/preparation6.jpg" alt="Подготовка к поступлению 6"></div>
-          <div class="gallery-item"><img src="IMG/preparation7.jpg" alt="Подготовка к поступлению 7"></div>
-          <div class="gallery-item"><img src="IMG/preparation8.jpg" alt="Подготовка к поступлению 8"></div>
-          <div class="gallery-item"><img src="IMG/preparation9.jpg" alt="Подготовка к поступлению 9"></div>
-          <div class="gallery-item"><img src="IMG/preparation10.jpg" alt="Подготовка к поступлению 10"></div>
-          <div class="gallery-item"><img src="IMG/preparation11.jpg" alt="Подготовка к поступлению 11"></div>
-        </div>
-      </div>
-      <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущее фото">❮</button>
-      <button class="carousel-btn carousel-btn-next" aria-label="Следующее фото">❯</button>
-      <div class="carousel-indicators">
-        <button class="indicator active" data-slide="0"></button>
-        <button class="indicator" data-slide="1"></button>
-        <button class="indicator" data-slide="2"></button>
-        <button class="indicator" data-slide="3"></button>
-        <button class="indicator" data-slide="4"></button>
-        <button class="indicator" data-slide="5"></button>
-        <button class="indicator" data-slide="6"></button>
-        <button class="indicator" data-slide="7"></button>
-        <button class="indicator" data-slide="8"></button>
-        <button class="indicator" data-slide="9"></button>
-        <button class="indicator" data-slide="10"></button>
-      </div>
+
+                <!-- Новая программа СОЛНЫШКО -->
+<div class="program-card program-special">
+    <div class="program-image">
+        <img src="img/psy.jpg" alt="СОЛНЫШКО - студия психолога"  />
+        <div class="program-badge">4+ лет</div>
+        <div class="special-badge">СОЛНЫШКО</div>
     </div>
-  </div>
-  <div class="program-content">
-    <h3>ПОДГОТОВКА К ПОСТУПЛЕНИЮ</h3>
-    <p>С ребятами, серьёзно относящимися к делу и решившими связать свою жизнь с творческой профессией, мы занимаемся подготовкой к поступлению в различные творческие учебные заведения. 
-Готовимся к вступительным экзаменам по рисунку, живописи, композиции и черчению.
-Благодаря приобретённым навыкам наши ребята успешно поступили на творческие специальности и занимаются в МАРХИ, университете им. А.Н. Косыгина, РАНХиГС , РУДН, РЭУ им. Плеханова, различных колледжах Москвы и области</p>
-    <button class="btn-program">Подробнее</button>
-  </div>
+    <div class="program-content">
+        <h3>СОЛНЫШКО - школа психологического здоровья</h3>
+        <p>
+            Арт-терапия для детей и взрослых, подготовка к школе, детская йога и консультации психолога для родителей.
+        </p>
+        <ul class="program-benefits">
+            <li>Профилактика дисграфии и развитие почерка</li>
+            <li>Развитие памяти, внимания и логического мышления</li>
+            <li>Нейроупражнения для активного развития мозга</li>
+            <li>Эмоциональная грамотность и навыки работы с чувствами</li>
+            <li>Формирование личности: познание себя и своих границ</li>
+            <li>Арт-терапия для подростков и взрослых</li>
+        </ul>
+        <div class="program-price">
+            <span class="price">от 3500₽</span>
+            <span class="price-period">консультация</span>
+        </div>
+        <button class="btn btn-program">Подробнее</button>
+    </div>
 </div>
-</div>  <!-- закрывает .container -->
-  </section> 
 
+            </div>
+        </div>
+    </section>
 
-  <!-- Секция "Галерея работ" -->
-  <section id="gallery" class="gallery">
-    <div class="container">
-      <h2 class="section-title">Галерея работ</h2>
-      <div class="gallery-carousel">
-        <div class="carousel-container">
-          <div class="carousel-track">
-            <div class="gallery-item">
-              <img src="IMG/work1.jpg" alt="Работа ученика 1">
-              <div class="gallery-overlay">
-                <h4>Рисунок акварелью</h4>
-                <p>Маша, 7 лет</p>
-              </div>
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Галерея работ наших учеников</h2>
+            <div class="gallery-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="gallery-item">
+                            <img src="img/gallery-1.jpg" alt="Работа ученика"  />
+                            <div class="gallery-overlay">
+                                <h4>Акварель</h4>
+                                <p>Маша, 7 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/gallery-2.jpg" alt="Работа ученика"  />
+                            <div class="gallery-overlay">
+                                <h4>Пластилиновая скульптура</h4>
+                                <p>Артем, 5 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/gallery-3.jpg" alt="Работа ученика"  />
+                            <div class="gallery-overlay">
+                                <h4>Портрет гуашью</h4>
+                                <p>Соня, 10 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/gallery-4.jpg" alt="Работа ученика"  />
+                            <div class="gallery-overlay">
+                                <h4>Карандашный рисунок</h4>
+                                <p>Данил, 12 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/gallery-5.jpg" alt="Работа ученика"  />
+                            <div class="gallery-overlay">
+                                <h4>Пастельный пейзаж</h4>
+                                <p>Лена, 14 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/gallery-6.jpg" alt="Работа ученика"  />
+                            <div class="gallery-overlay">
+                                <h4>Масляная живопись</h4>
+                                <p>Максим, 16 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/gallery-7.jpg" alt="Работа ученика"  />
+                            <div class="gallery-overlay">
+                                <h4>Коллаж</h4>
+                                <p>Алиса, 8 лет</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/gallery-8.jpg" alt="Работа ученика"  />
+                            <div class="gallery-overlay">
+                                <h4>Керамика</h4>
+                                <p>Никита, 9 лет</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-btn-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-btn-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                    <button class="indicator active"></button>
+                    <button class="indicator"></button>
+                    <button class="indicator"></button>
+                    <button class="indicator"></button>
+                    <button class="indicator"></button>
+                    <button class="indicator"></button>
+                    <button class="indicator"></button>
+                    <button class="indicator"></button>
+                </div>
             </div>
-            <div class="gallery-item">
-              <img src="IMG/work2.jpg" alt="Работа ученика 2">
-              <div class="gallery-overlay">
-                <h4>Пластилиновая скульптура</h4>
-                <p>Артем, 5 лет</p>
-              </div>
-            </div>
-            <div class="gallery-item">
-              <img src="IMG/work3.jpg" alt="Работа ученика 3">
-              <div class="gallery-overlay">
-                <h4>Гуашь, портрет</h4>
-                <p>Соня, 10 лет</p>
-              </div>
-            </div>
-            <div class="gallery-item">
-              <img src="IMG/work4.jpg" alt="Работа ученика 4">
-              <div class="gallery-overlay">
-                <h4>Карандашный рисунок</h4>
-                <p>Данил, 12 лет</p>
-              </div>
-            </div>
-            <div class="gallery-item">
-              <img src="IMG/work5.jpg" alt="Работа ученика 5">
-              <div class="gallery-overlay">
-                <h4>Пастель, пейзаж</h4>
-                <p>Лена, 14 лет</p>
-              </div>
-            </div>
-            <div class="gallery-item">
-              <img src="IMG/work6.jpg" alt="Работа ученика 6">
-              <div class="gallery-overlay">
-                <h4>Масляная живопись</h4>
-                <p>Максим, 16 лет</p>
-              </div>
-            </div>
-            <div class="gallery-item">
-              <img src="IMG/work7.jpg" alt="Работа ученика 7">
-              <div class="gallery-overlay">
-                <h4>Коллаж</h4>
-                <p>Алиса, 8 лет</p>
-              </div>
-            </div>
-            <div class="gallery-item">
-              <img src="IMG/work8.jpg" alt="Работа ученика 8">
-              <div class="gallery-overlay">
-                <h4>Глиняная работа</h4>
-                <p>Никита, 9 лет</p>
-              </div>
-            </div>
-          </div>
         </div>
-        <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущий слайд">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button class="carousel-btn carousel-btn-next" aria-label="Следующий слайд">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="carousel-indicators">
-          <button class="indicator active" data-slide="0"></button>
-          <button class="indicator" data-slide="1"></button>
-          <button class="indicator" data-slide="2"></button>
-          <button class="indicator" data-slide="3"></button>
-          <button class="indicator" data-slide="4"></button>
-          <button class="indicator" data-slide="5"></button>
-          <button class="indicator" data-slide="6"></button>
-          <button class="indicator" data-slide="7"></button>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Секция "Мастер-классы" -->
-  <section id="masterclasses" class="programs">
-    <div class="container">
-      <h2 class="section-title">Мастер-классы</h2>
-      <!-- Мастер-класс 1 -->
-      <div class="program-card">
-        <div class="program-image">
-          <div class="gallery-carousel about-carousel">
-            <div class="carousel-container">
-              <div class="carousel-track">
-                <div class="gallery-item">
-                  <img src="IMG/masterclass1a.jpg" alt="Акварельные техники 1">
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты и запись</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3><i class="fas fa-info-circle"></i> Информация</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Телефон</strong>
+                                <a href="tel:+79164455131">+7 (916) 445-51-31</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <a href="mailto:devre2016@yandex.ru">devre2016@yandex.ru</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Адрес</strong>
+                                <address>г. Одинцово, ул. Говорова 28</address>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Режим работы</strong>
+                                <div class="schedule">
+                                    <div class="schedule-item">
+                                        <span class="day">Пн-Пт</span>
+                                        <span class="time">15:00–20:00</span>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <span class="day">Сб-Вс</span>
+                                        <span class="time">10:00–18:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <h4><i class="fas fa-map"></i> Как нас найти</h4>
+                        <div class="yandex-map" id="yandex-map"></div>
+                        <div class="map-fallback">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>Карта загружается...</p>
+                            <button class="btn-map" id="load-map-btn">Загрузить карту</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                  <img src="IMG/masterclass1b.jpg" alt="Акварельные техники 2">
+                <div class="contact-form">
+                    <h3><i class="fas fa-pen-fancy"></i> Записаться на пробное занятие</h3>
+                    <form action="#" method="POST" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <input type="text" name="name" placeholder="Имя ребенка" required />
+                            </div>
+                            <div class="form-group half">
+                                <input type="number" name="age" placeholder="Возраст" min="5" max="18" required />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <input type="text" name="parent_name" placeholder="Имя родителя" required />
+                            </div>
+                            <div class="form-group half">
+                                <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email (необязательно)" />
+                        </div>
+                        <div class="form-group">
+                            <select name="program" required>
+                                <option value="">Выберите программу</option>
+                                <option value="kids">Рисование для малышей (5-8 лет)</option>
+                                <option value="oil">Живопись маслом (12+ лет)</option>
+                                <option value="academic">Рисунок и живопись (8-16 лет)</option>
+                                <option value="exam">Подготовка к поступлению (15-18 лет)</option>
+                                <option value="psychology">СОЛНЫШКО - студия психолога (3-16 лет)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="time">
+                                <option value="">Удобное время (необязательно)</option>
+                                <option value="morning">Утром (10:00–12:00)</option>
+                                <option value="afternoon">Днём (14:00–16:00)</option>
+                                <option value="evening">Вечером (17:00–19:00)</option>
+                                <option value="weekend">Выходные</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Дополнительные пожелания или вопросы" rows="4"></textarea>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="privacy" required />
+                                <span class="checkmark"></span>
+                                <span>Согласен с <a href="#" class="privacy-link">политикой конфиденциальности</a></span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">
+                            <i class="fas fa-paper-plane"></i> Отправить заявку
+                        </button>
+                    </form>
                 </div>
-                <div class="gallery-item">
-                  <img src="IMG/masterclass1c.jpg" alt="Акварельные техники 3">
-                </div>
-              </div>
             </div>
-            <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущее фото">❮</button>
-            <button class="carousel-btn carousel-btn-next" aria-label="Следующее фото">❯</button>
-            <div class="carousel-indicators">
-              <button class="indicator active" data-slide="0"></button>
-              <button class="indicator" data-slide="1"></button>
-              <button class="indicator" data-slide="2"></button>
-            </div>
-          </div>
         </div>
-        <div class="program-content">
-          <h3>Акварельные техники</h3>
-          <p>Познакомимся с разными акварельными техниками: от градиентов до работы с текстурами. Уроки подходят для всех уровней.</p>
-          <ul class="program-benefits">
-            <li>Основы работы с красками</li>
-            <li>Создание градиентов</li>
-            <li>Текстуры и эффекты</li>
-            <li>Композиция в акварели</li>
-          </ul>
-          <button class="btn-program">Подробнее</button>
-        </div>
-      </div>
-      <!-- Мастер-класс 2 -->
-      <div class="program-card reverse">
-        <div class="program-image">
-          <div class="gallery-carousel about-carousel">
-            <div class="carousel-container">
-              <div class="carousel-track">
-                <div class="gallery-item">
-                  <img src="IMG/masterclass2a.jpg" alt="Работа с глиной 1">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/masterclass2b.jpg" alt="Работа с глиной 2">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/masterclass2c.jpg" alt="Работа с глиной 3">
-                </div>
-              </div>
-            </div>
-            <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущее фото">❮</button>
-            <button class="carousel-btn carousel-btn-next" aria-label="Следующее фото">❯</button>
-            <div class="carousel-indicators">
-              <button class="indicator active" data-slide="0"></button>
-              <button class="indicator" data-slide="1"></button>
-              <button class="indicator" data-slide="2"></button>
-            </div>
-          </div>
-        </div>
-        <div class="program-content">
-          <h3>Работа с глиной</h3>
-          <p>Научимся лепить простые формы и создавать небольшие скульптуры из глины. Разовьём тактильное восприятие и пространственное мышление.</p>
-          <ul class="program-benefits">
-            <li>Основы лепки из глины</li>
-            <li>Создание форм</li>
-            <li>Техника шликера</li>
-            <li>Оформление и глазурование</li>
-          </ul>
-          <button class="btn-program">Подробнее</button>
-        </div>
-      </div>
-      <!-- Мастер-класс 3 -->
-      <div class="program-card">
-        <div class="program-image">
-          <div class="gallery-carousel about-carousel">
-            <div class="carousel-container">
-              <div class="carousel-track">
-                <div class="gallery-item">
-                  <img src="IMG/masterclass3a.jpg" alt="Пастельные зарисовки 1">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/masterclass3b.jpg" alt="Пастельные зарисовки 2">
-                </div>
-                <div class="gallery-item">
-                  <img src="IMG/masterclass3c.jpg" alt="Пастельные зарисовки 3">
-                </div>
-              </div>
-            </div>
-            <button class="carousel-btn carousel-btn-prev" aria-label="Предыдущее фото">❮</button>
-            <button class="carousel-btn carousel-btn-next" aria-label="Следующее фото">❯</button>
-            <div class="carousel-indicators">
-              <button class="indicator active" data-slide="0"></button>
-              <button class="indicator" data-slide="1"></button>
-              <button class="indicator" data-slide="2"></button>
-            </div>
-          </div>
-        </div>
-        <div class="program-content">
-          <h3>Пастельные зарисовки</h3>
-          <p>Освоим работу сухой пастелью: растушёвку, смешение оттенков и создание мягких переходов. Идеально для портретов и пейзажей.</p>
-          <ul class="program-benefits">
-            <li>Приёмы растушёвки</li>
-            <li>Смешение цветов</li>
-            <li>Контраст и светотень</li>
-            <li>Пастель на бумаге</li>
-          </ul>
-          <button class="btn-program">Подробнее</button>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Секция "Контакты и запись" -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2 class="section-title">Контакты и запись</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <h3>Свяжитесь с нами</h3>
-          <p><strong>Телефон:</strong> <a href="tel:+79164455131">+7 916 445-5131</a></p>
-          <p><strong>Email:</strong> <a href="mailto:devre2016@yandex.ru">devre2016@yandex.ru</a></p>
-          <p><strong>Адрес:</strong> г. Одинцово, ул. Говорова 28</p>
-          <p><strong>Режим работы:</strong><br>Пн-Пт 15:00–20:00<br>Сб-Вс 10:00–18:00</p>
-          <div class="map-container">
-            <h4>Как нас найти</h4>
-            <div id="yandex-map" class="yandex-map"></div>
-            <div class="map-fallback">
-              <p>Карта загружается...</p>
-              <button id="load-map-btn" class="btn-map">Показать карту</button>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3><i class="fas fa-palette"></i> ИЗОСТУДИЯ</h3>
+                        <p>Творческое развитие детей в Одинцово</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Программы</h4>
+                    <ul class="footer-links">
+                        <li><a href="#programs">Рисование для малышей</a></li>
+                        <li><a href="#programs">Живопись маслом</a></li>
+                        <li><a href="#programs">Академический рисунок</a></li>
+                        <li><a href="#programs">Подготовка к поступлению</a></li>
+                        <li><a href="#programs">СОЛНЫШКО - студия психолога</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+79164455131">+7 (916) 445-51-31</a></li>
+                        <li><a href="mailto:devre2016@yandex.ru">devre2016@yandex.ru</a></li>
+                        <li>г. Одинцово, ул. Говорова 28</li>
+                    </ul>
+                </div>
             </div>
-          </div>
+            <div class="footer-bottom">
+                <p>© 2025 ИЗОСТУДИЯ. Все права защищены.</p>
+            </div>
         </div>
-        <div class="contact-form">
-          <h3>Записаться на пробное занятие</h3>
-          <form id="trial-form" action="https://getform.io/f/ajjrdlea" method="POST" enctype="multipart/form-data">
-            <div class="form-row">
-              <div class="form-group half">
-                <input type="text" name="childName" placeholder="Имя ребёнка" required>
-              </div>
-              <div class="form-group half">
-                <input type="number" name="childAge" placeholder="Возраст ребёнка" min="3" max="18" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group half">
-                <input type="text" name="parentName" placeholder="Имя родителя" required>
-              </div>
-              <div class="form-group half">
-                <input type="tel" name="phone" placeholder="Телефон" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="email" name="email" placeholder="Email (необязательно)">
-            </div>
-            <div class="form-group">
-              <select name="program" required>
-                <option value="">Выберите программу</option>
-                <option value="drawing-3">Рисование (3–6 лет)</option>
-                <option value="sculpting-3">Лепка (3–6 лет)</option>
-                <option value="drawing-school">Рисование (7–12 лет)</option>
-                <option value="sculpting-school">Лепка (7–12 лет)</option>
-                <option value="advanced">Для старшеклассников (13–17 лет)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <select name="preferredTime">
-                <option value="">Удобное время (необязательно)</option>
-                <option value="morning">Утром (10:00–12:00)</option>
-                <option value="afternoon">Днём (14:00–16:00)</option>
-                <option value="evening">Вечером (17:00–19:00)</option>
-                <option value="weekend">Выходные</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <textarea name="comments" placeholder="Дополнительные пожелания или вопросы" rows="4"></textarea>
-            </div>
-            <div class="form-group checkbox-group">
-              <label class="checkbox-label">
-                <input type="checkbox" name="privacy" required>
-                <span class="checkmark"></span>
-                Согласен с <a href="#" class="privacy-link">политикой конфиденциальности</a>
-              </label>
-            </div>
-            <button type="submit" class="btn-primary full-width">Записаться на пробное занятие</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Футер -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <h3>Изостудия</h3>
-          <p>Творческое развитие детей</p>
-        </div>
-        <div class="footer-links">
-          <h4>Быстрые ссылки</h4>
-          <ul>
-            <li><a href="#programs">Программы</a></li>
-            <li><a href="#about">О нас</a></li>
-            <li><a href="#gallery">Галерея</a></li>
-            <li><a href="#contact">Контакты</a></li>
-          </ul>
-        </div>
-        <div class="footer-social">
-          <h4>Мы в соцсетях</h4>
-          <div class="social-links">
-            <a href="#" class="social-link">VK</a>
-            <a href="#" class="social-link">Instagram</a>
-            <a href="#" class="social-link">Telegram</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Изостудия. Все права защищены.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script-new.js"></script>
 </body>
 </html>
