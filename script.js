@@ -1,13 +1,9 @@
-// Плавная прокрутка по якорным ссылкам (с учётом пункта "Мастер-классы")
+// Плавная прокрутка по якорям
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const href = this.getAttribute('href');
-        let targetId = href.substring(1);
-        // Если нажали на "Мастер-классы", скроллим к этой секции
-        if (href === '#masterclasses') {
-            targetId = 'masterclasses';
-        }
+        const targetId = href === '#masterclasses' ? 'masterclasses' : href.substring(1);
         const target = document.getElementById(targetId);
         if (target) {
             const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
@@ -17,13 +13,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Показ/скрытие мобильного меню
+// Мобильное меню
 const createMobileMenu = () => {
     const nav = document.querySelector('.nav');
     const navUl = nav.querySelector('ul');
     const burger = document.createElement('div');
     burger.className = 'burger';
-    burger.innerHTML = `<span></span><span></span><span></span>`;
+    burger.innerHTML = '<span></span><span></span><span></span>';
     nav.appendChild(burger);
     burger.addEventListener('click', () => {
         burger.classList.toggle('active');
@@ -37,7 +33,7 @@ const createMobileMenu = () => {
     });
 };
 
-// Анимация появления элементов при скролле
+// Анимация появления
 const observeElements = () => {
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -68,17 +64,22 @@ const showNotification = (message, type = 'info') => {
     if (!container) {
         container = document.createElement('div');
         container.className = 'notifications';
-        container.style.cssText = 'position:fixed;top:20px;right:20px;z-index:10000;';
+        Object.assign(container.style, {
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            zIndex: '10000'
+        });
         document.body.appendChild(container);
     }
     const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
     const colors = {
         success: { bg: '#4CAF50', color: '#fff' },
         error:   { bg: '#f44336', color: '#fff' },
         info:    { bg: '#2196F3', color: '#fff' }
     };
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
     Object.assign(notification.style, {
         background: colors[type].bg,
         color: colors[type].color,
@@ -99,7 +100,7 @@ const showNotification = (message, type = 'info') => {
     }, 5000);
 };
 
-// Карусель галереи (для всех .gallery-carousel)
+// Класс карусели
 class GalleryCarousel {
     constructor(root) {
         this.carousel = root;
@@ -120,9 +121,6 @@ class GalleryCarousel {
         this.indicators.forEach((ind, i) => {
             ind.addEventListener('click', () => this.changeSlide(i));
         });
-        this.auto = setInterval(() => this.changeSlide(this.currentSlide + 1), 5000);
-        this.carousel.addEventListener('mouseenter', () => clearInterval(this.auto));
-        this.carousel.addEventListener('mouseleave', () => this.auto = setInterval(() => this.changeSlide(this.currentSlide + 1), 5000));
     }
     changeSlide(index) {
         this.currentSlide = (index + this.totalSlides) % this.totalSlides;
@@ -148,13 +146,15 @@ class YandexMapIntegration {
     loadYandexMaps() {
         if (this.loaded) return;
         this.loaded = true;
-        if (this.fallback) this.fallback.textContent = 'Карта загружается...';
+        this.fallback.textContent = 'Карта загружается...';
         const script = document.createElement('script');
         script.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
         script.async = true;
         script.onload = () => ymaps.ready(() => {
             const map = new ymaps.Map(this.mapContainer, { center: this.coordinates, zoom: 16 });
-            map.geoObjects.add(new ymaps.Placemark(this.coordinates, { balloonContent: 'Детская Изостудия<br>Творческое развитие детей' }));
+            map.geoObjects.add(new ymaps.Placemark(this.coordinates, {
+                balloonContent: 'Детская Изостудия<br>Творческое развитие детей'
+            }));
             this.fallback.style.display = 'none';
         });
         document.head.appendChild(script);
@@ -201,53 +201,41 @@ class ContactFormHandler {
         const err = document.createElement('div');
         err.className = 'field-error';
         err.textContent = message;
-        err.style.cssText = 'color:#f44336;font-size:12px;margin-top:5px;';
+        Object.assign(err.style, {
+            color: '#f44336',
+            fontSize: '12px',
+            marginTop: '5px'
+        });
         field.parentNode.appendChild(err);
     }
 }
 
-// Инициализация всех компонентов
+// Инициализация
 document.addEventListener('DOMContentLoaded', () => {
     createMobileMenu();
     observeElements();
-    document.querySelectorAll('.gallery-carousel').forEach(el => new GalleryCarousel(el));
+    document.querySelectorAll('.gallery-carousel, .about-carousel').forEach(el => new GalleryCarousel(el));
     new YandexMapIntegration();
     new ContactFormHandler();
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints;
-  const carousels = document.querySelectorAll('.gallery-carousel, .about-carousel');
-
-  carousels.forEach(carousel => {
-    const track = carousel.querySelector('.carousel-track');
-    let startX = 0;
-    let moved = false;
-
-    if (isTouch) {
-      track.addEventListener('touchstart', e => {
-        startX = e.touches[0].clientX;
-        moved = false;
-      });
-
-      track.addEventListener('touchmove', e => {
-        moved = true;
-      });
-
-      track.addEventListener('touchend', e => {
-        if (!moved) return;
-        const delta = e.changedTouches[0].clientX - startX;
-        const threshold = 50; // минимальная длина свайпа
-        if (delta < -threshold) {
-          // свайп влево – следующий слайд
-          carousel.querySelector('.carousel-btn-next').click();
-        } else if (delta > threshold) {
-          // свайп вправо – предыдущий слайд
-          carousel.querySelector('.carousel-btn-prev').click();
+    // Свайп для мобильных
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints;
+    document.querySelectorAll('.gallery-carousel, .about-carousel').forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        let startX = 0, moved = false;
+        if (isTouch) {
+            track.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+                moved = false;
+            });
+            track.addEventListener('touchmove', () => moved = true);
+            track.addEventListener('touchend', e => {
+                if (!moved) return;
+                const delta = e.changedTouches[0].clientX - startX;
+                const threshold = 50;
+                if (delta < -threshold) carousel.querySelector('.carousel-btn-next').click();
+                else if (delta > threshold) carousel.querySelector('.carousel-btn-prev').click();
+            });
         }
-      });
-    }
-
-    // кнопки Prev/Next остаются неизменными
-  });
+    });
 });
