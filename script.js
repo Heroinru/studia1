@@ -206,71 +206,38 @@ class ContactFormHandler {
     }
 }
 
-// Инициализация всех компонентов
-document.addEventListener('DOMContentLoaded', () => {
-    createMobileMenu();
-    observeElements();
-    document.querySelectorAll('.gallery-carousel').forEach(el => new GalleryCarousel(el));
-    new YandexMapIntegration();
-    new ContactFormHandler();
-});
-
 document.addEventListener('DOMContentLoaded', () => {
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints;
   const carousels = document.querySelectorAll('.gallery-carousel, .about-carousel');
 
   carousels.forEach(carousel => {
     const track = carousel.querySelector('.carousel-track');
-    const btnPrev = carousel.querySelector('.carousel-btn-prev');
-    const btnNext = carousel.querySelector('.carousel-btn-next');
-    const indicators = carousel.querySelectorAll('.indicator');
-    let currentIndex = 0;
-
-    function updateCarousel(index) {
-      const items = track.children;
-      const offset = -items[index].offsetLeft;
-      track.style.transform = `translateX(${offset}px)`;
-      indicators.forEach((ind, i) => ind.classList.toggle('active', i === index));
-      currentIndex = index;
-    }
-
-    btnPrev.addEventListener('click', () => {
-      const newIndex = currentIndex > 0 ? currentIndex - 1 : track.children.length - 1;
-      updateCarousel(newIndex);
-    });
-
-    btnNext.addEventListener('click', () => {
-      const newIndex = currentIndex < track.children.length - 1 ? currentIndex + 1 : 0;
-      updateCarousel(newIndex);
-    });
-
-    indicators.forEach((ind, i) => {
-      ind.addEventListener('click', () => updateCarousel(i));
-    });
+    let startX = 0;
+    let moved = false;
 
     if (isTouch) {
-      let startX = 0;
-      let moved = false;
-      const threshold = 50;
-
       track.addEventListener('touchstart', e => {
         startX = e.touches[0].clientX;
         moved = false;
       });
 
-      track.addEventListener('touchmove', () => {
+      track.addEventListener('touchmove', e => {
         moved = true;
       });
 
       track.addEventListener('touchend', e => {
         if (!moved) return;
         const delta = e.changedTouches[0].clientX - startX;
-        if (delta < -threshold) btnNext.click();
-        else if (delta > threshold) btnPrev.click();
+        const threshold = 50; // минимальная длина свайпа
+        if (delta < -threshold) {
+          // свайп влево – следующий слайд
+          carousel.querySelector('.carousel-btn-next').click();
+        } else if (delta > threshold) {
+          // свайп вправо – предыдущий слайд
+          carousel.querySelector('.carousel-btn-prev').click();
+        }
       });
     }
-  });
-});
 
     // кнопки Prev/Next остаются неизменными
   });
