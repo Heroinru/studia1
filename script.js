@@ -206,6 +206,15 @@ class ContactFormHandler {
     }
 }
 
+// Инициализация всех компонентов
+document.addEventListener('DOMContentLoaded', () => {
+    createMobileMenu();
+    observeElements();
+    document.querySelectorAll('.gallery-carousel').forEach(el => new GalleryCarousel(el));
+    new YandexMapIntegration();
+    new ContactFormHandler();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints;
   const carousels = document.querySelectorAll('.gallery-carousel, .about-carousel');
@@ -213,32 +222,37 @@ document.addEventListener('DOMContentLoaded', () => {
   carousels.forEach(carousel => {
     const track = carousel.querySelector('.carousel-track');
     let startX = 0;
-    let moved = false;
+    let currentTranslate = 0;
 
     if (isTouch) {
       track.addEventListener('touchstart', e => {
         startX = e.touches[0].clientX;
-        moved = false;
       });
 
       track.addEventListener('touchmove', e => {
-        moved = true;
+        const delta = e.touches[0].clientX - startX;
+        track.style.transform = `translateX(${currentTranslate + delta}px)`;
       });
 
       track.addEventListener('touchend', e => {
-        if (!moved) return;
         const delta = e.changedTouches[0].clientX - startX;
-        const threshold = 50; // минимальная длина свайпа
+        const threshold = track.clientWidth / 4;
         if (delta < -threshold) {
-          // свайп влево – следующий слайд
           carousel.querySelector('.carousel-btn-next').click();
         } else if (delta > threshold) {
-          // свайп вправо – предыдущий слайд
           carousel.querySelector('.carousel-btn-prev').click();
         }
+        track.style.transform = '';
+        currentTranslate = 0;
       });
     }
 
-    // кнопки Prev/Next остаются неизменными
+    // Существующая логика Prev/Next остаётся без изменений для ПК
+    carousel.querySelector('.carousel-btn-prev').addEventListener('click', () => {
+      // ваша функция переключения на предыдущий слайд
+    });
+    carousel.querySelector('.carousel-btn-next').addEventListener('click', () => {
+      // ваша функция переключения на следующий слайд
+    });
   });
 });
