@@ -1,29 +1,21 @@
-// Плавная прокрутка по якорным ссылкам
+// Плавная прокрутка по якорным ссылкам (с учётом пункта "Мастер-классы")
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        e.preventDefault();
         const href = this.getAttribute('href');
-        // Обрабатываем все ссылки, но для “Галереи” будем скроллить к #gallery
+        let targetId = href.substring(1);
+        // Если нажали на "Мастер-классы", скроллим к этой секции
         if (href === '#masterclasses') {
-            e.preventDefault();
-            const target = document.getElementById('gallery');
-            if (target) {
-                const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-                const offset = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                window.scrollTo({ top: offset, behavior: 'smooth' });
-            }
-        } else {
-            // Обычные якорные ссылки работают как раньше
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-                const offset = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                window.scrollTo({ top: offset, behavior: 'smooth' });
-            }
+            targetId = 'masterclasses';
+        }
+        const target = document.getElementById(targetId);
+        if (target) {
+            const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+            const offset = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
         }
     });
 });
-
 
 // Показ/скрытие мобильного меню
 const createMobileMenu = () => {
@@ -33,12 +25,10 @@ const createMobileMenu = () => {
     burger.className = 'burger';
     burger.innerHTML = `<span></span><span></span><span></span>`;
     nav.appendChild(burger);
-
     burger.addEventListener('click', () => {
         burger.classList.toggle('active');
         navUl.classList.toggle('active');
     });
-
     navUl.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             burger.classList.remove('active');
@@ -57,7 +47,6 @@ const observeElements = () => {
             }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
     const style = document.createElement('style');
     style.textContent = `
         .fade-in {
@@ -67,7 +56,6 @@ const observeElements = () => {
         }
     `;
     document.head.appendChild(style);
-
     document.querySelectorAll('.program-card, .about-content').forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
@@ -111,7 +99,7 @@ const showNotification = (message, type = 'info') => {
     }, 5000);
 };
 
-// Карусель галереи, работает для любого количества .gallery-carousel
+// Карусель галереи (для всех .gallery-carousel)
 class GalleryCarousel {
     constructor(root) {
         this.carousel = root;
@@ -127,40 +115,26 @@ class GalleryCarousel {
     }
     init() {
         this.updateCarousel();
-        this.prevBtn.addEventListener('click', () => this.prevSlide());
-        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        this.prevBtn.addEventListener('click', () => this.changeSlide(this.currentSlide - 1));
+        this.nextBtn.addEventListener('click', () => this.changeSlide(this.currentSlide + 1));
         this.indicators.forEach((ind, i) => {
-            ind.addEventListener('click', () => this.goToSlide(i));
+            ind.addEventListener('click', () => this.changeSlide(i));
         });
-        this.autoplayInterval = setInterval(() => this.nextSlide(), 5000);
+        this.auto = setInterval(() => this.changeSlide(this.currentSlide + 1), 5000);
+        this.carousel.addEventListener('mouseenter', () => clearInterval(this.auto));
+        this.carousel.addEventListener('mouseleave', () => this.auto = setInterval(() => this.changeSlide(this.currentSlide + 1), 5000));
+    }
+    changeSlide(index) {
+        this.currentSlide = (index + this.totalSlides) % this.totalSlides;
+        this.updateCarousel();
     }
     updateCarousel() {
         this.track.style.transform = `translateX(-${this.currentSlide * 100}%)`;
-        this.indicators.forEach((ind, i) => {
-            ind.classList.toggle('active', i === this.currentSlide);
-        });
-    }
-    prevSlide() {
-        this.currentSlide = this.currentSlide === 0 
-            ? this.totalSlides - 1 
-            : this.currentSlide - 1;
-        this.updateCarousel();
-    }
-    nextSlide() {
-        this.currentSlide = this.currentSlide === this.totalSlides - 1 
-            ? 0 
-            : this.currentSlide + 1;
-        this.updateCarousel();
-    }
-    goToSlide(index) {
-        if (index >= 0 && index < this.totalSlides) {
-            this.currentSlide = index;
-            this.updateCarousel();
-        }
+        this.indicators.forEach((ind, i) => ind.classList.toggle('active', i === this.currentSlide));
     }
 }
 
-// Яндекс Карты (упрощенная версия)
+// Яндекс.Карты
 class YandexMapIntegration {
     constructor() {
         this.mapContainer = document.getElementById('yandex-map');
@@ -179,30 +153,26 @@ class YandexMapIntegration {
         script.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
         script.async = true;
         script.onload = () => ymaps.ready(() => {
-            const map = new ymaps.Map(this.mapContainer, {
-                center: this.coordinates, zoom: 16
-            });
-            map.geoObjects.add(new ymaps.Placemark(
-                this.coordinates,
-                { balloonContent: 'Детская Изостудия<br>Творческое развитие детей' }
-            ));
+            const map = new ymaps.Map(this.mapContainer, { center: this.coordinates, zoom: 16 });
+            map.geoObjects.add(new ymaps.Placemark(this.coordinates, { balloonContent: 'Детская Изостудия<br>Творческое развитие детей' }));
             this.fallback.style.display = 'none';
         });
         document.head.appendChild(script);
     }
 }
 
-// Обработка формы с минимальной валидацией
+// Обработка формы
 class ContactFormHandler {
     constructor() {
         this.form = document.querySelector('.contact-form form');
         if (!this.form) return;
         this.form.addEventListener('submit', e => this.handleSubmit(e));
-        this.form.querySelectorAll('input, select, textarea')
-            .forEach(f => f.addEventListener('input', () => {
+        this.form.querySelectorAll('input, select, textarea').forEach(f => {
+            f.addEventListener('input', () => {
                 f.style.borderColor = '';
                 f.parentNode.querySelector('.field-error')?.remove();
-            }));
+            });
+        });
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -214,34 +184,75 @@ class ContactFormHandler {
         setTimeout(() => this.form.submit(), 500);
     }
     validate() {
-        let ok = true;
+        let valid = true;
         this.form.querySelectorAll('[required]').forEach(f => {
             const v = f.value.trim();
             if (!v || (f.type === 'email' && !v.includes('@')) || (f.type === 'tel' && v.length < 10)) {
                 this.showError(f, 'Введите корректное значение');
-                ok = false;
+                valid = false;
             } else {
                 f.style.borderColor = '#4CAF50';
             }
         });
-        return ok;
+        return valid;
     }
-    showError(f, msg) {
-        f.style.borderColor = '#f44336';
-        const d = document.createElement('div');
-        d.className = 'field-error';
-        d.textContent = msg;
-        d.style.cssText = 'color:#f44336;font-size:12px;margin-top:5px;';
-        f.parentNode.appendChild(d);
+    showError(field, message) {
+        field.style.borderColor = '#f44336';
+        const err = document.createElement('div');
+        err.className = 'field-error';
+        err.textContent = message;
+        err.style.cssText = 'color:#f44336;font-size:12px;margin-top:5px;';
+        field.parentNode.appendChild(err);
     }
 }
 
-// Инициализация
+// Инициализация всех компонентов
 document.addEventListener('DOMContentLoaded', () => {
     createMobileMenu();
     observeElements();
-    document.querySelectorAll('.gallery-carousel')
-        .forEach(node => new GalleryCarousel(node));
+    document.querySelectorAll('.gallery-carousel').forEach(el => new GalleryCarousel(el));
     new YandexMapIntegration();
     new ContactFormHandler();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints;
+  const carousels = document.querySelectorAll('.gallery-carousel, .about-carousel');
+
+  carousels.forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    let startX = 0;
+    let currentTranslate = 0;
+
+    if (isTouch) {
+      track.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+      });
+
+      track.addEventListener('touchmove', e => {
+        const delta = e.touches[0].clientX - startX;
+        track.style.transform = `translateX(${currentTranslate + delta}px)`;
+      });
+
+      track.addEventListener('touchend', e => {
+        const delta = e.changedTouches[0].clientX - startX;
+        const threshold = track.clientWidth / 4;
+        if (delta < -threshold) {
+          carousel.querySelector('.carousel-btn-next').click();
+        } else if (delta > threshold) {
+          carousel.querySelector('.carousel-btn-prev').click();
+        }
+        track.style.transform = '';
+        currentTranslate = 0;
+      });
+    }
+
+    // Существующая логика Prev/Next остаётся без изменений для ПК
+    carousel.querySelector('.carousel-btn-prev').addEventListener('click', () => {
+      // ваша функция переключения на предыдущий слайд
+    });
+    carousel.querySelector('.carousel-btn-next').addEventListener('click', () => {
+      // ваша функция переключения на следующий слайд
+    });
+  });
 });
