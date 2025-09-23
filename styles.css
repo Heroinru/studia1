@@ -1139,3 +1139,10 @@ body {
     box-shadow: none !important;
     background: transparent !important;
 }
+
+/* Скрыть стрелки на мобильных */
+@media (max-width: 768px) {
+  .carousel-btn {
+    display: none !important;
+  }
+}
