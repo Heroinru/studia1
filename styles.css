@@ -1243,3 +1243,14 @@ body {
     padding: 25px 20px;
   }
 }
+
+@media (max-width: 768px) {
+  /* Увеличиваем высоту шапки */
+  .header {
+    padding: 25px 20px !important;
+  }
+  /* Убираем заголовок внутри шапки */
+  .header .logo h1 {
+    display: none;
+  }
+}
