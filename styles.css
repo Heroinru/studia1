@@ -1247,7 +1247,7 @@ body {
 @media (max-width: 768px) {
   /* Увеличиваем высоту шапки */
   .header {
-    padding: 25px 20px !important;
+    padding: 10px 20px !important;
   }
   /* Убираем заголовок внутри шапки */
   .header .logo h1 {
