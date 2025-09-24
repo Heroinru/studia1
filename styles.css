@@ -1249,8 +1249,8 @@ body {
   .header {
     padding: 10px 20px !important;
   }
-  /* Убираем заголовок внутри шапки */
-  .header .logo h1 {
-    display: none;
+  .header .logo h1,
+  .header .logo p {
+    display: none !important;
   }
 }
