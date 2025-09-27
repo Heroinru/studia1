@@ -239,3 +239,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// script.js — добавьте в конец файла
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.btn-program').forEach(button => {
+    button.addEventListener('click', function() {
+      const content = button.closest('.program-content');
+      const benefits = content.querySelector('.program-benefits');
+      const fullDesc = content.querySelector('.program-full-description');
+
+      benefits.classList.toggle('hidden');
+      fullDesc.classList.toggle('open');
+
+      if (fullDesc.classList.contains('open')) {
+        button.textContent = 'Свернуть';
+        button.classList.add('active');
+      } else {
+        button.textContent = 'Подробнее';
+        button.classList.remove('active');
+      }
+    });
+  });
+});
