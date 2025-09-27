@@ -1254,3 +1254,38 @@ body {
     display: none !important;
   }
 }
+
+/* styles.css — добавьте в конец файла */
+.program-full-description {
+  display: none;
+  margin-top: 15px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.program-full-description.open {
+  display: block;
+}
+
+.program-benefits.hidden {
+  display: none;
+}
+
+.btn-program {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-program:hover {
+  background-color: #ddd;
+}
+
+.btn-program.active {
+  background-color: #555;
+  color: #fff;
+}
