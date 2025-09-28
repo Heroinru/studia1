@@ -287,3 +287,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Добавить в конец файла script.js после кода для расписания
+document.addEventListener('DOMContentLoaded', function() {
+  // ... существующий код для расписания ...
+  
+  // Код для кнопки цен
+  const pricesToggle = document.getElementById('prices-toggle');
+  const pricesContent = document.getElementById('prices-content');
+  
+  if (pricesToggle && pricesContent) {
+    pricesToggle.addEventListener('click', function() {
+      const isVisible = pricesContent.classList.contains('show');
+      
+      if (isVisible) {
+        pricesContent.classList.remove('show');
+        pricesToggle.classList.remove('active');
+        setTimeout(() => {
+          pricesContent.style.display = 'none';
+        }, 300);
+      } else {
+        pricesContent.style.display = 'block';
+        setTimeout(() => {
+          pricesContent.classList.add('show');
+        }, 10);
+        pricesToggle.classList.add('active');
+      }
+    });
+  }
+});
