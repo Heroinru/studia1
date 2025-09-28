@@ -261,3 +261,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// Добавить в конец файла script.js
+document.addEventListener('DOMContentLoaded', function() {
+  const scheduleToggle = document.getElementById('schedule-toggle');
+  const scheduleContent = document.getElementById('schedule-content');
+  
+  if (scheduleToggle && scheduleContent) {
+    scheduleToggle.addEventListener('click', function() {
+      const isVisible = scheduleContent.classList.contains('show');
+      
+      if (isVisible) {
+        scheduleContent.classList.remove('show');
+        scheduleToggle.classList.remove('active');
+        setTimeout(() => {
+          scheduleContent.style.display = 'none';
+        }, 300);
+      } else {
+        scheduleContent.style.display = 'block';
+        setTimeout(() => {
+          scheduleContent.classList.add('show');
+        }, 10);
+        scheduleToggle.classList.add('active');
+      }
+    });
+  }
+});
