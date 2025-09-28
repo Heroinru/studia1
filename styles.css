@@ -1471,3 +1471,210 @@ body {
     font-size: 0.75em;
   }
 }
+
+/* Стили для секции цен */
+.prices-section {
+  padding: 20px 0 40px 0;
+  background-color: #f8f9fa;
+}
+
+.btn-prices-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 20px auto;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #27ae60, #229954);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+.btn-prices-toggle:hover {
+  background: linear-gradient(135deg, #229954, #1e8449);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+}
+
+.btn-prices-toggle.active {
+  background: linear-gradient(135deg, #1e8449, #186a3b);
+}
+
+.prices-icon {
+  font-size: 1.3em;
+}
+
+.prices-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: 20px;
+}
+
+.prices-content.show {
+  display: block;
+  opacity: 1;
+}
+
+.prices-block {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.prices-title {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.price-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.price-card {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 12px;
+  padding: 25px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.price-card.special {
+  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+  border-color: #ffd93d;
+}
+
+.price-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.price-header h4 {
+  font-size: 1.3em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.price-amount {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #27ae60;
+  margin-bottom: 5px;
+}
+
+.price-details p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.price-includes {
+  list-style: none;
+  padding: 0;
+}
+
+.price-includes li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  position: relative;
+  padding-left: 25px;
+}
+
+.price-includes li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.price-includes li:last-child {
+  border-bottom: none;
+}
+
+.discount-info {
+  margin: 30px 0;
+}
+
+.discount-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #e8f4f8, #d4e6f1);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 5px solid #3498db;
+}
+
+.discount-icon {
+  font-size: 2.5em;
+  flex-shrink: 0;
+}
+
+.discount-text h4 {
+  margin: 0 0 8px 0;
+  color: #2980b9;
+  font-size: 1.2em;
+}
+
+.discount-text p {
+  margin: 0;
+  color: #34495e;
+  line-height: 1.4;
+}
+
+.prices-note {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #27ae60;
+  margin-top: 25px;
+}
+
+.prices-note p {
+  margin: 8px 0;
+  font-size: 0.9em;
+  color: #333;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .price-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .discount-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .prices-block {
+    padding: 20px;
+  }
+  
+  .prices-title {
+    font-size: 1.6em;
+  }
+}
+
