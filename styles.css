@@ -2153,4 +2153,33 @@ body {
   }
 }
 
+@media (min-width: 769px) {
+  /* Сбросим любые позиционирования */
+  #nav-menu {
+    position: static !important;
+    width: auto !important;
+  }
+
+  /* Горизонтальный флекс без переноса */
+  #nav-menu ul {
+    display: flex !important;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;  /* отключаем перенос */
+    width: 100%;        /* растянуть во весь контейнер */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Каждый пункт равномерно растягивается */
+  #nav-menu li {
+    flex: 1 1 0;
+    text-align: center;
+  }
+
+  /* Ссылки внутри пунктов */
+  #nav-menu li a {
+    display: block;
+    padding: 15px 10px;
+  }
+}
 
