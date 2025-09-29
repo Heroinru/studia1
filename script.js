@@ -362,3 +362,55 @@ document.addEventListener('DOMContentLoaded', () => {
     burger.classList.toggle('active');
   });
 });
+
+// Плавная прокрутка по якорям
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        const targetId = href.substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const offset = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+        // Закрыть мобильное меню, если открыто
+        const navMenu = document.getElementById('nav-menu');
+        const burger = document.getElementById('burger');
+        if (navMenu.classList.contains('show')) {
+            navMenu.classList.remove('show');
+            burger.classList.remove('active');
+        }
+    });
+});
+
+// Мобильное меню (единственный бургер)
+document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.getElementById('burger');
+    const navMenu = document.getElementById('nav-menu');
+    burger.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+        burger.classList.toggle('active');
+    });
+});
+
+// Анимация появления
+const observeElements = () => {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+};
+
+// Инициализация
+document.addEventListener('DOMContentLoaded', () => {
+    observeElements();
+    // Инициализация каруселей, карты, формы и прочего...
+});
