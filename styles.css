@@ -2152,3 +2152,27 @@ body {
     height: 40px;
   }
 }
+
+
+/* Десктоп: меню растягивается по ширине и не съезжает вправо */
+@media (min-width: 769px) {
+  /* Навигация всегда занимает всю ширину контейнера */
+  #nav-menu {
+    width: 100% !important;
+    position: static !important;
+  }
+
+  /* Список пунктов меню */
+  #nav-menu ul {
+    display: flex !important;
+    justify-content: space-evenly; /* равномерно по всей ширине */
+    flex-wrap: wrap;               /* перенос при необходимости */
+    gap: 0;
+  }
+
+  /* Пункты меню */
+  #nav-menu li {
+    flex: 1 1 auto; /* каждый элемент может сжиматься/расти */
+    text-align: center;
+  }
+}
