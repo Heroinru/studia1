@@ -1678,3 +1678,180 @@ body {
   }
 }
 
+/* Растягиваем навигационное меню по всей ширине с равными промежутками */
+.nav ul {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li {
+  margin: 0;
+}
+
+/* Стили для ссылок */
+.nav ul li a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Предотвращает перенос текста */
+}
+
+.nav ul li a:hover {
+  background-color: #f0f0f0;
+  color: #4a90e2;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .nav ul {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  .nav ul li {
+    width: 100%;
+  }
+  
+  .nav ul li a {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+  }
+}
+
+/* Стили для хедера с логотипом */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.logo-container {
+  flex-shrink: 0; /* Логотип не сжимается */
+}
+
+.logo-image {
+  height: 60px; /* Настройте высоту под ваш дизайн */
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+}
+
+/* Обновленные стили для блока с текстом */
+.logo {
+  flex-grow: 1;
+  text-align: center;
+  margin: 0 20px;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.logo p {
+  margin: 5px 0 0 0;
+  font-size: 0.9em;
+  color: #666;
+  font-style: italic;
+}
+
+/* Обновленные стили для навигации */
+.nav {
+  flex-shrink: 0;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.nav ul li a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+.nav ul li a:hover {
+  background-color: #f0f0f0;
+  color: #4a90e2;
+  border-radius: 5px;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .logo-image {
+    height: 50px;
+  }
+  
+  .nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .nav ul li a {
+    font-size: 0.85em;
+    padding: 6px 10px;
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .logo-image {
+    height: 40px;
+  }
+  
+  .logo p {
+    font-size: 0.8em;
+  }
+  
+  .nav ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+  
+  .nav ul li {
+    width: 100%;
+  }
+  
+  .nav ul li a {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    font-size: 0.9em;
+  }
+  
+  .nav ul li:last-child a {
+    border-bottom: none;
+  }
+}
