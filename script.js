@@ -354,14 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('nav-menu');
-  burger.addEventListener('click', () => {
-    menu.classList.toggle('show');
-    burger.classList.toggle('active');
-  });
-});
+
 
 // Плавная прокрутка по якорям
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
