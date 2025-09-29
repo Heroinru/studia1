@@ -2154,32 +2154,33 @@ body {
 }
 
 @media (min-width: 769px) {
-  /* Сбросим любые позиционирования */
-  #nav-menu {
-    position: static !important;
-    width: auto !important;
+  .header-inner {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  /* Горизонтальный флекс без переноса */
+  #nav-menu {
+    flex-grow: 1;
+    margin-left: 20px;
+  }
+
   #nav-menu ul {
     display: flex !important;
-    justify-content: space-evenly;
-    flex-wrap: nowrap;  /* отключаем перенос */
-    width: 100%;        /* растянуть во весь контейнер */
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     margin: 0;
     padding: 0;
   }
 
-  /* Каждый пункт равномерно растягивается */
   #nav-menu li {
-    flex: 1 1 0;
+    flex: 1 1 auto;
     text-align: center;
   }
 
-  /* Ссылки внутри пунктов */
   #nav-menu li a {
     display: block;
-    padding: 15px 10px;
+    padding: 15px 0;
   }
 }
-
