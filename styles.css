@@ -2154,32 +2154,38 @@ body {
 }
 
 @media (min-width: 769px) {
-  .header-inner {
-    display: flex !important;
+  /* Хедер: логотип и навигация на одной линии */
+  .header .container {
+    display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  #nav-menu {
+  /* Навигация растягивается от логотипа до правого края */
+  .nav {
     flex-grow: 1;
     margin-left: 20px;
   }
 
-  #nav-menu ul {
+  /* Список пунктов меню: одна строка, без переноса */
+  .nav ul {
     display: flex !important;
-    width: 100%;
     justify-content: space-between;
     flex-wrap: nowrap;
+    width: 100%;
     margin: 0;
     padding: 0;
+    list-style: none;
   }
 
-  #nav-menu li {
+  /* Каждый пункт равномерно */
+  .nav ul li {
     flex: 1 1 auto;
     text-align: center;
   }
 
-  #nav-menu li a {
+  /* Ссылки растягиваются по ширине */
+  .nav ul li a {
     display: block;
     padding: 15px 0;
   }
