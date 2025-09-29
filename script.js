@@ -8,13 +8,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const targetId = href.substring(1);
     const target = document.getElementById(targetId);
     if (target) {
-      const headerHeight = document.querySelector('.header').offsetHeight || 0;
+      const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
       const offset = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
       window.scrollTo({ top: offset, behavior: 'smooth' });
     }
     const navMenu = document.getElementById('nav-menu');
     const burgerBtn = document.getElementById('burger');
-    if (navMenu && navMenu.classList.contains('show')) {
+    if (navMenu?.classList.contains('show')) {
       navMenu.classList.remove('show');
       burgerBtn.classList.remove('active');
     }
@@ -22,7 +22,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-
   // Бургер-меню
   const burger = document.getElementById('burger');
   const navMenu = document.getElementById('nav-menu');
@@ -49,8 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => {
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.program-card, .about-content, .fade-in').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
   });
 
@@ -59,13 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
     new GalleryCarousel(root);
   });
 
-  // Инициализация карты
+  // Инициализация Яндекс-карты
   new YandexMapIntegration();
 
   // Обработка формы
   new ContactFormHandler();
 
-  // Свайп для карусели на мобильных
+  // Свайп для мобильных каруселей
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints;
   document.querySelectorAll('.gallery-carousel, .about-carousel').forEach(carousel => {
     const track = carousel.querySelector('.carousel-track');
@@ -86,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Кнопки "Подробнее"/"Свернуть" в программах
+  // Кнопки "Подробнее"/"Свернуть"
   document.querySelectorAll('.btn-program').forEach(button => {
     button.addEventListener('click', () => {
       const content = button.closest('.program-content');
@@ -140,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Контакты: кнопка-ссылка "Смотреть расписание"
+  // Контакты: кнопка "Смотреть расписание"
   const scheduleLinkBtn = document.getElementById('schedule-link-btn');
   if (scheduleLinkBtn) {
     scheduleLinkBtn.addEventListener('click', () => {
@@ -157,5 +159,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
 });
