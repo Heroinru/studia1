@@ -316,3 +316,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Добавить в конец файла script.js
+document.addEventListener('DOMContentLoaded', function() {
+  // ... существующий код ...
+  
+  // Кнопка-ссылка на расписание в контактах
+  const scheduleLinkBtn = document.getElementById('schedule-link-btn');
+  
+  if (scheduleLinkBtn) {
+    scheduleLinkBtn.addEventListener('click', function() {
+      // Находим секцию расписания
+      const scheduleSection = document.getElementById('schedule-section');
+      const scheduleToggle = document.getElementById('schedule-toggle');
+      const scheduleContent = document.getElementById('schedule-content');
+      
+      if (scheduleSection) {
+        // Плавная прокрутка к секции расписания
+        scheduleSection.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+        
+        // Если расписание свернуто, разворачиваем его
+        if (scheduleContent && !scheduleContent.classList.contains('show')) {
+          setTimeout(() => {
+            scheduleContent.style.display = 'block';
+            setTimeout(() => {
+              scheduleContent.classList.add('show');
+            }, 10);
+            scheduleToggle.classList.add('active');
+          }, 500); // Задержка для плавной прокрутки
+        }
+      }
+    });
+  }
+});
