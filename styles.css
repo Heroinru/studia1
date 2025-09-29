@@ -1953,3 +1953,47 @@ body {
     border: none;
   }
 }
+
+/* Мобильное (до 768px) */
+@media (max-width: 768px) {
+  /* Хедер: логотип и бургер в одну строку */
+  .header-inner {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Логотип */
+  .logo-link, .logo-container {
+    order: 1; /* Логотип первым */
+  }
+  .logo-image {
+    height: 40px;
+    width: auto;
+    margin: 0;
+  }
+
+  /* Бургер */
+  .burger-btn {
+    display: block !important;
+    order: 2; /* Бургер справа */
+  }
+
+  /* Скрывает основное меню по умолчанию */
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+  }
+  /* Показывает меню при классе .show */
+  .nav-menu.show {
+    display: block;
+  }
+
+  /* Меню списком вертикально */
+  .nav-menu ul {
+    flex-direction: column;
+  }
+}
