@@ -385,15 +385,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Мобильное меню (единственный бургер)
 document.addEventListener('DOMContentLoaded', () => {
-    const burger = document.getElementById('burger');
-    const navMenu = document.getElementById('nav-menu');
-    burger.addEventListener('click', () => {
-        navMenu.classList.toggle('show');
-        burger.classList.toggle('active');
-    });
+  const burger = document.getElementById('burger');
+  const navMenu = document.getElementById('nav-menu');
+  if (!burger || !navMenu) return;
+
+  burger.addEventListener('click', () => {
+    // переключаем класс .show у меню
+    navMenu.classList.toggle('show');
+    // переключаем класс active у бургер-кнопки для анимации
+    burger.classList.toggle('active');
+  });
 });
+
 
 // Анимация появления
 const observeElements = () => {
