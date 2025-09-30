@@ -2152,39 +2152,38 @@ body {
     height: 40px;
   }
 }
-
 @media (min-width: 769px) {
-  /* Хедер: логотип и навигация на одной линии */
+  /* Флекс-контейнер для логотипа и меню */
   .header .container {
-    display: flex;
+    display: flex !important;
     align-items: center;
-    justify-content: space-between;
   }
 
-  /* Навигация растягивается от логотипа до правого края */
+  /* Блок навигации — флекс-элемент растяжения */
   .nav {
+    display: flex !important;
     flex-grow: 1;
-    margin-left: 20px;
+    justify-content: center; /* центр всех пунктов */
   }
 
-  /* Список пунктов меню: одна строка, без переноса */
+  /* Улучшаем контейнер списка */
   .nav ul {
     display: flex !important;
-    justify-content: space-between;
-    flex-wrap: nowrap;
     width: 100%;
+    max-width: none !important;
+    justify-content: space-between;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  /* Каждый пункт равномерно */
+  /* Каждый пункт меню равномерно */
   .nav ul li {
-    flex: 1 1 auto;
+    flex: 1 1 auto !important;
     text-align: center;
   }
 
-  /* Ссылки растягиваются по ширине */
+  /* Ссылки внутри пунктов */
   .nav ul li a {
     display: block;
     padding: 15px 0;
