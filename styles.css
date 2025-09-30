@@ -2152,40 +2152,42 @@ body {
     height: 40px;
   }
 }
+/* ----- Жёсткая флекс-раскладка навигации на десктопе ----- */
 @media (min-width: 769px) {
-  /* Контейнер хедера остаётся флексом */
+  /* 1) контейнер хедера становится флексом */
   .header .container {
-    display: flex;
-    align-items: center;
-  }
-
-  /* Навигация (класс .nav) растягивается */
-  .nav {
     display: flex !important;
-    flex-grow: 1;
-    margin-left: 20px; /* отступ между логотипом и меню */
+    align-items: center !important;
+    /* justify-content оставляем по умолчанию, чтобы логотип слева */
   }
 
-  /* Список пунктов меню во всю ширину .nav */
-  .nav ul {
+  /* 2) навигация .nav растягивается между логотипом и правым краем */
+  .header .container > .nav {
     display: flex !important;
-    width: 100%;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    flex-grow: 1 !important;
+    margin-left: 20px !important;
   }
 
-  /* Каждый пункт занимает равную часть */
-  .nav ul li {
-    flex: 1 1 auto;
-    text-align: center;
+  /* 3) список .nav ul тянем на всю ширину внутри .nav */
+  .header .container > .nav > ul {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
   }
 
-  /* Ссылки занимают всю высоту и ширину li */
-  .nav ul li a {
-    display: block;
-    padding: 15px 0;
+  /* 4) равномерное деление пункты меню */
+  .header .container > .nav > ul > li {
+    flex: 1 1 0 !important;
+    text-align: center !important;
+  }
+
+  /* 5) ссылки заполняют весь li */
+  .header .container > .nav > ul > li > a {
+    display: block !important;
+    padding: 15px 0 !important;
   }
 }
