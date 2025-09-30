@@ -2153,44 +2153,38 @@ body {
   }
 }
 @media (min-width: 769px) {
-  /* В хедере делаем контейнер полноширинным */
-  .header > .container {
-    max-width: 100% !important;
-    width: 100% !important;
-    padding: 0 20px; /* сохраняем отступы */
-  }
-
-  /* Хедер-обёртка оставляем флекс */
-  .header-inner {
+  /* Контейнер хедера остаётся флексом */
+  .header .container {
     display: flex;
     align-items: center;
   }
 
-  /* Навигация растягивается на всю ширину между логотипом и правым краем */
-  #nav-menu {
+  /* Навигация (класс .nav) растягивается */
+  .nav {
+    display: flex !important;
     flex-grow: 1;
-    margin-left: 40px; /* отступ от логотипа */
+    margin-left: 20px; /* отступ между логотипом и меню */
   }
 
-  /* Список меню на всю ширину nav-menu */
-  #nav-menu ul {
+  /* Список пунктов меню во всю ширину .nav */
+  .nav ul {
     display: flex !important;
+    width: 100%;
     justify-content: space-between;
     flex-wrap: nowrap;
-    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  /* Каждый пункт занимает равную долю */
-  #nav-menu li {
+  /* Каждый пункт занимает равную часть */
+  .nav ul li {
     flex: 1 1 auto;
     text-align: center;
   }
 
-  /* Ссылки внутри пунктов */
-  #nav-menu li a {
+  /* Ссылки занимают всю высоту и ширину li */
+  .nav ul li a {
     display: block;
     padding: 15px 0;
   }
