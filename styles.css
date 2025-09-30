@@ -2235,3 +2235,42 @@ body {
     padding: 15px 0 !important;
   }
 }
+
+/* Патч: равномерное растягивание меню на десктопе */
+@media (min-width: 769px) {
+  /* 1) Контейнер хедера — флекс */
+  .header .container {
+    display: flex;
+    align-items: center;
+  }
+
+  /* 2) Навигация внутри контейнера растягивается */
+  #nav-menu {
+    display: flex !important;
+    flex-grow: 1 !important;
+    margin-left: 20px !important;
+  }
+
+  /* 3) Список ul тянем на всю ширину navigation */
+  #nav-menu ul {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+
+  /* 4) Равномерное деление li */
+  #nav-menu ul li {
+    flex: 1 1 auto !important;
+    text-align: center !important;
+  }
+
+  /* 5) Ссылки внутри li */
+  #nav-menu ul li a {
+    display: block !important;
+    padding: 15px 0 !important;
+  }
+}
