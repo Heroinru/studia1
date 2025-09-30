@@ -2162,41 +2162,40 @@ body {
   }
 }
 
-/* Патч: равномерное растягивание меню на десктопе */
 @media (min-width: 769px) {
-  /* 1) Контейнер хедера — флекс */
+  /* Делаем контейнер хедера флексом */
   .header .container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
-  /* 2) Навигация внутри контейнера растягивается */
+  /* Навигация растягивается между логотипом и краем */
   #nav-menu {
     display: flex !important;
     flex-grow: 1 !important;
     margin-left: 20px !important;
   }
 
-  /* 3) Список ul тянем на всю ширину navigation */
+  /* Список ul делаем grid на 8 колонок */
   #nav-menu ul {
-    display: flex !important;
+    display: grid !important;
+    grid-template-columns: repeat(8, 1fr) !important;
     width: 100% !important;
-    justify-content: space-between !important;
-    flex-wrap: nowrap !important;
     margin: 0 !important;
     padding: 0 !important;
     list-style: none !important;
+    gap: 0 !important;
   }
 
-  /* 4) Равномерное деление li */
+  /* Ссылки по центру своих ячеек */
   #nav-menu ul li {
-    flex: 1 1 auto !important;
-    text-align: center !important;
+    text-align: center;
   }
 
-  /* 5) Ссылки внутри li */
   #nav-menu ul li a {
-    display: block !important;
-    padding: 15px 0 !important;
+    display: inline-block;
+    padding: 15px 0;
+    width: 100%;
   }
 }
