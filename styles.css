@@ -805,14 +805,13 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
-
 }
 
 .header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 0;
+    padding: var(--space-16) var(--space-20);
 }
 
 /* Стили для header-content - основной контейнер */
@@ -845,22 +844,17 @@ body {
 
 .logo h1 {
     margin: 0;
-    font-size: 0.8rem;
+    font-size: var(--font-size-xl);
     color: var(--color-primary);
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-heading); /* Playfair Display для логотипа */
-    line-height: 1.1; /* Уменьшаем межстрочный интервал */
-    margin-top: 2px;
-    visibility: hidden;
 }
 
 .logo p {
     margin: var(--space-4) 0 0 0;
-    font-size: 0.6rem;
+    font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     font-style: italic;
-    line-height: 1.2; /* Уменьшаем межстрочный интервал */
-    visibility: hidden;
 }
 
 /* Кнопка-бургер (скрыта по умолчанию) */
@@ -1079,7 +1073,7 @@ body {
 
 /* Стили для крупных надписей в центре */
 .hero-text-center h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 0.3em;
     font-weight: 900;
     letter-spacing: 0.1em;
@@ -1089,7 +1083,7 @@ body {
 }
 
 .hero-text-center h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 0.5em;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -2824,7 +2818,7 @@ h4,
     display: flex !important;
     width: 100% !important;
     justify-content: space-between !important;
-    gap: 7px !important;
+    gap: 10px !important;
   }
   .nav ul li {
     flex: 1 1 auto !important;
@@ -2832,13 +2826,11 @@ h4,
   }
   .nav ul li a {
     font-size: 1em !important;
-    padding: 4px 6px !important;
+    padding: 6px 3px !important;
     text-align: center !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    padding: 0;        /* убираем все внутренние отступы */
-    padding-left: 0;   /* на всякий случай обнуляем левый отступ */
   }
 }
 
@@ -3232,7 +3224,5 @@ h4,
     display: none !important;
   }
 }
-
-
 
 /* =================== КОНЕЦ СТИЛЕЙ ТРЕТЬЯКОВСКОЙ ГАЛЕРЕИ =================== */
