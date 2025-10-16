@@ -2837,7 +2837,8 @@ h4,
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    Padding-left:0
+    padding: 0;        /* убираем все внутренние отступы */
+    padding-left: 0;   /* на всякий случай обнуляем левый отступ */
   }
 }
 
