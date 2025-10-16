@@ -2824,7 +2824,7 @@ h4,
     display: flex !important;
     width: 100% !important;
     justify-content: space-between !important;
-    gap: 10px !important;
+    gap: 7px !important;
   }
   .nav ul li {
     flex: 1 1 auto !important;
@@ -2832,7 +2832,7 @@ h4,
   }
   .nav ul li a {
     font-size: 1em !important;
-    padding: 6px 3px !important;
+    padding: 4px 6px !important;
     text-align: center !important;
     white-space: nowrap !important;
     overflow: hidden !important;
