@@ -805,13 +805,14 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
+
 }
 
 .header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-16) var(--space-20);
+    padding: 4px 0;
 }
 
 /* Стили для header-content - основной контейнер */
@@ -844,17 +845,22 @@ body {
 
 .logo h1 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: var(--color-primary);
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-heading); /* Playfair Display для логотипа */
+    line-height: 1.1; /* Уменьшаем межстрочный интервал */
+    margin-top: 2px;
+    visibility: hidden;
 }
 
 .logo p {
     margin: var(--space-4) 0 0 0;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     color: var(--color-text-secondary);
     font-style: italic;
+    line-height: 1.2; /* Уменьшаем межстрочный интервал */
+    visibility: hidden;
 }
 
 /* Кнопка-бургер (скрыта по умолчанию) */
