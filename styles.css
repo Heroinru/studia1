@@ -2837,6 +2837,7 @@ h4,
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
+    Padding-left:0
   }
 }
 
