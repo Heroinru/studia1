@@ -903,7 +903,7 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 3px;
+    gap: var(--space-16);
 }
 
 .nav ul li a {
