@@ -1047,14 +1047,14 @@ body {
 .hero {
     position: relative;
     margin-top: 0;
-    padding-top: 80px;
+    padding-top: 160px;
     min-height: 90vh;
     height: auto;
     background: url("IMG/header-bg.jpg") center center / cover no-repeat;
     background-position: top center;
     color: var(--color-cream-50);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     text-align: center;
     filter: brightness(1.6);
@@ -1083,7 +1083,7 @@ body {
 
 /* Стили для крупных надписей в центре */
 .hero-text-center h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 0.3em;
     font-weight: 900;
     letter-spacing: 0.1em;
@@ -1093,7 +1093,7 @@ body {
 }
 
 .hero-text-center h2 {
-    font-size: 2rem;
+    font-size: 2.8rem;
     margin-bottom: 0.5em;
     font-weight: 700;
     letter-spacing: 0.05em;
