@@ -3219,23 +3219,146 @@ h4,
   }
 }
 
-/* Убираем серую полосу и подписи в Галерее на мобильных и планшетах */
-@media (max-width: 1024px) {
-  /* Скрываем само оверлейное полотно */
-  .gallery-overlay {
-    display: none !important;
+
+
+/* Для всех iPhone 11-17: компактные экраны */
+@media (max-width: 430px) {
+  .hero-text-center {
+    padding-top: 80px !important;    /* отступ сверху для текста */
+    padding-bottom: 40px !important;
   }
-  /* Если нужен клик по картинке без видимого фона */
-  .gallery-overlay {
-    background: none !important;
-    padding: 0 !important;
+
+  .hero-text-center h1 {
+    font-size: 1.6rem !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    hyphens: auto !important;
+    padding: 0 15px !important;
+    margin-top: 20px !important;     /* дополнительный отступ */
   }
-  /* Убираем текстовые подписи */
-  .gallery-overlay .caption,
-  .gallery-item figcaption {
-    display: none !important;
+
+  .hero-text-center h2 {
+    font-size: 1.3rem !important;
+    line-height: 1.2 !important;
+    padding: 0 15px !important;
+    margin-top: 10px !important;
+  }
+
+  .hero-text-center p {
+    font-size: 1rem !important;
+    padding: 0 15px !important;
+  }
+
+  :root {
+    --font-size-3xl: 1.6rem !important;
   }
 }
+
+/* Для iPhone Plus/Max моделей (немного больше места) */
+@media (min-width: 431px) and (max-width: 480px) {
+  .hero-text-center {
+    padding-top: 100px !important;
+    padding-bottom: 50px !important;
+  }
+
+  .hero-text-center h1 {
+    font-size: 2rem !important;
+    line-height: 1.25 !important;
+    padding: 0 20px !important;
+    margin-top: 20px !important;
+  }
+
+  .hero-text-center h2 {
+    font-size: 1.4rem !important;
+    padding: 0 20px !important;
+    margin-top: 10px !important;
+  }
+
+  :root {
+    --font-size-3xl: 2rem !important;
+  }
+}
+
+/* Для планшетов и больших экранов */
+@media (min-width: 481px) and (max-width: 1024px) {
+  .hero-text-center h1 {
+    font-size: 2.5rem !important;
+  }
+
+  :root {
+    --font-size-3xl: 2.5rem !important;
+  }
+}
+
+/* Для ПК (оставляем оригинальный размер) */
+@media (min-width: 1025px) {
+  :root {
+    --font-size-3xl: 3.5rem !important;
+  }
+}
+/* Для iPhone Pro моделей (11 Pro, 12 Pro, 13 Pro, 14 Pro, 15 Pro) */
+
+/* iPad Mini (вертикальная ориентация - 768px) */
+@media (min-width: 744px) and (max-width: 834px) and (orientation: portrait) {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  .hero {
+    background-size: cover !important;
+    min-height: 60vh !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .hero-text-center {
+    padding-top: 100px !important;
+    padding-bottom: 50px !important;
+    width: 100% !important;
+  }
+
+  .hero-text-center h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-text-center h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .header-content {
+    padding: 0 20px !important;
+  }
+
+  nav ul {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    justify-content: center !important;
+  }
+
+  nav ul li a {
+    font-size: 0.95rem !important;
+    padding: 8px 12px !important;
+  }
+
+  section {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 20px !important;
+  }
+
+  
 
 
 
