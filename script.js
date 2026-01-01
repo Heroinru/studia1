@@ -1,64 +1,11 @@
-// Плавная прокрутка по якорям
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        const targetId = href === '#masterclasses' ? 'masterclasses' : href.substring(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-            const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-            const offset = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            window.scrollTo({ top: offset, behavior: 'smooth' });
-        }
-    });
-});
+/**
+ * ОБНОВЛЕННЫЙ SCRIPT.JS
+ * Совместим с новым index.html и styles.css
+ */
 
-// Мобильное меню
-const createMobileMenu = () => {
-    const nav = document.querySelector('.nav');
-    const navUl = nav.querySelector('ul');
-    const burger = document.createElement('div');
-    burger.className = 'burger';
-    burger.innerHTML = '<span></span><span></span><span></span>';
-    nav.appendChild(burger);
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('active');
-        navUl.classList.toggle('active');
-    });
-    navUl.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('active');
-            navUl.classList.remove('active');
-        });
-    });
-};
+/* =================== 1. УТИЛИТЫ И ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ =================== */
 
-// Анимация появления
-const observeElements = () => {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    const style = document.createElement('style');
-    style.textContent = `
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-    `;
-    document.head.appendChild(style);
-    document.querySelectorAll('.program-card, .about-content').forEach(el => {
-        el.classList.add('fade-in');
-        observer.observe(el);
-    });
-};
-
-// Уведомления
+// Уведомления (Notifications)
 const showNotification = (message, type = 'info') => {
     let container = document.querySelector('.notifications');
     if (!container) {
@@ -93,14 +40,22 @@ const showNotification = (message, type = 'info') => {
         wordWrap: 'break-word'
     });
     container.appendChild(notification);
-    setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+    
+    // Анимация появления
+    requestAnimationFrame(() => {
+        notification.style.transform = 'translateX(0)';
+    });
+
+    // Удаление через 5 секунд
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => notification.remove(), 300);
     }, 5000);
 };
 
-// Класс карусели
+/* =================== 2. КЛАССЫ =================== */
+
+// Класс карусели (Галерея + Отзывы + Программы)
 class GalleryCarousel {
     constructor(root) {
         this.carousel = root;
@@ -109,277 +64,108 @@ class GalleryCarousel {
         this.prevBtn = root.querySelector('.carousel-btn-prev');
         this.nextBtn = root.querySelector('.carousel-btn-next');
         this.indicators = root.querySelectorAll('.indicator');
+        
         this.currentSlide = 0;
         this.totalSlides = this.items.length;
+        
         if (this.totalSlides === 0) return;
+        
         this.init();
+        this.initSwipe(); // Инициализация свайпа для мобильных
     }
+
     init() {
         this.updateCarousel();
-        this.prevBtn.addEventListener('click', () => this.changeSlide(this.currentSlide - 1));
-        this.nextBtn.addEventListener('click', () => this.changeSlide(this.currentSlide + 1));
+        
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.changeSlide(this.currentSlide - 1);
+            });
+        }
+        
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.changeSlide(this.currentSlide + 1);
+            });
+        }
+        
         this.indicators.forEach((ind, i) => {
-            ind.addEventListener('click', () => this.changeSlide(i));
+            ind.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.changeSlide(i);
+            });
         });
     }
+
     changeSlide(index) {
         this.currentSlide = (index + this.totalSlides) % this.totalSlides;
         this.updateCarousel();
     }
+
     updateCarousel() {
         this.track.style.transform = `translateX(-${this.currentSlide * 100}%)`;
         this.indicators.forEach((ind, i) => ind.classList.toggle('active', i === this.currentSlide));
     }
+
+    // Добавлен функционал свайпа (Touch Events)
+    initSwipe() {
+        let startX = 0;
+        let isDragging = false;
+
+        this.track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
+
+        this.track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+        }, { passive: true });
+
+        this.track.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+
+            // Если свайпнули больше чем на 50px
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    this.changeSlide(this.currentSlide + 1); // Свайп влево -> След. слайд
+                } else {
+                    this.changeSlide(this.currentSlide - 1); // Свайп вправо -> Пред. слайд
+                }
+            }
+            isDragging = false;
+        });
+    }
 }
 
-// Яндекс.Карты
+// Класс Яндекс.Карт
 class YandexMapIntegration {
     constructor() {
         this.mapContainer = document.getElementById('yandex-map');
-        this.fallback = document.querySelector('.map-fallback');
-        this.loadButton = document.getElementById('load-map-btn');
-        this.coordinates = [55.688209, 37.296337];
+        // Координаты студии (из ТЗ или HTML)
+        this.coordinates = [55.694602, 37.306913]; 
+        
         if (!this.mapContainer) return;
-        this.loadButton?.addEventListener('click', () => this.loadYandexMaps());
+        
+        // Ленивая загрузка (через 2 секунды после загрузки сайта)
         setTimeout(() => this.loadYandexMaps(), 2000);
     }
+
     loadYandexMaps() {
         if (this.loaded) return;
         this.loaded = true;
-        this.fallback.textContent = 'Карта загружается...';
+        
         const script = document.createElement('script');
         script.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
         script.async = true;
         script.onload = () => ymaps.ready(() => {
-            const map = new ymaps.Map(this.mapContainer, { center: this.coordinates, zoom: 16 });
-            map.geoObjects.add(new ymaps.Placemark(this.coordinates, {
-                balloonContent: 'Детская Изостудия<br>Творческое развитие детей'
-            }));
-            this.fallback.style.display = 'none';
-        });
-        document.head.appendChild(script);
-    }
-}
-
-// Обработка формы
-class ContactFormHandler {
-    constructor() {
-        this.form = document.querySelector('.contact-form form');
-        if (!this.form) return;
-        this.form.addEventListener('submit', e => this.handleSubmit(e));
-        this.form.querySelectorAll('input, select, textarea').forEach(f => {
-            f.addEventListener('input', () => {
-                f.style.borderColor = '';
-                f.parentNode.querySelector('.field-error')?.remove();
-            });
-        });
-    }
-    handleSubmit(e) {
-        e.preventDefault();
-        if (!this.validate()) {
-            showNotification('Пожалуйста, заполните все обязательные поля', 'error');
-            return;
-        }
-        showNotification('Отправляем заявку...', 'info');
-        setTimeout(() => this.form.submit(), 500);
-    }
-    validate() {
-        let valid = true;
-        this.form.querySelectorAll('[required]').forEach(f => {
-            const v = f.value.trim();
-            if (!v || (f.type === 'email' && !v.includes('@')) || (f.type === 'tel' && v.length < 10)) {
-                this.showError(f, 'Введите корректное значение');
-                valid = false;
-            } else {
-                f.style.borderColor = '#4CAF50';
-            }
-        });
-        return valid;
-    }
-    showError(field, message) {
-        field.style.borderColor = '#f44336';
-        const err = document.createElement('div');
-        err.className = 'field-error';
-        err.textContent = message;
-        Object.assign(err.style, {
-            color: '#f44336',
-            fontSize: '12px',
-            marginTop: '5px'
-        });
-        field.parentNode.appendChild(err);
-    }
-}
-
-// Инициализация
-document.addEventListener('DOMContentLoaded', () => {
-    createMobileMenu();
-    observeElements();
-    document.querySelectorAll('.gallery-carousel, .about-carousel').forEach(el => new GalleryCarousel(el));
-    new YandexMapIntegration();
-    new ContactFormHandler();
-
-    // Свайп для мобильных
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints;
-    document.querySelectorAll('.gallery-carousel, .about-carousel').forEach(carousel => {
-        const track = carousel.querySelector('.carousel-track');
-        let startX = 0, moved = false;
-        if (isTouch) {
-            track.addEventListener('touchstart', e => {
-                startX = e.touches[0].clientX;
-                moved = false;
-            });
-            track.addEventListener('touchmove', () => moved = true);
-            track.addEventListener('touchend', e => {
-                if (!moved) return;
-                const delta = e.changedTouches[0].clientX - startX;
-                const threshold = 50;
-                if (delta < -threshold) carousel.querySelector('.carousel-btn-next').click();
-                else if (delta > threshold) carousel.querySelector('.carousel-btn-prev').click();
-            });
-        }
-    });
-});
-
-// script.js — добавьте в конец файла
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.btn-program').forEach(button => {
-    button.addEventListener('click', function() {
-      const content = button.closest('.program-content');
-      const benefits = content.querySelector('.program-benefits');
-      const fullDesc = content.querySelector('.program-full-description');
-
-      benefits.classList.toggle('hidden');
-      fullDesc.classList.toggle('open');
-
-      if (fullDesc.classList.contains('open')) {
-        button.textContent = 'Свернуть';
-        button.classList.add('active');
-      } else {
-        button.textContent = 'Подробнее';
-        button.classList.remove('active');
-      }
-    });
-  });
-});
-
-// Добавить в конец файла script.js
-document.addEventListener('DOMContentLoaded', function() {
-  const scheduleToggle = document.getElementById('schedule-toggle');
-  const scheduleContent = document.getElementById('schedule-content');
-  
-  if (scheduleToggle && scheduleContent) {
-    scheduleToggle.addEventListener('click', function() {
-      const isVisible = scheduleContent.classList.contains('show');
-      
-      if (isVisible) {
-        scheduleContent.classList.remove('show');
-        scheduleToggle.classList.remove('active');
-        setTimeout(() => {
-          scheduleContent.style.display = 'none';
-        }, 300);
-      } else {
-        scheduleContent.style.display = 'block';
-        setTimeout(() => {
-          scheduleContent.classList.add('show');
-        }, 10);
-        scheduleToggle.classList.add('active');
-      }
-    });
-  }
-});
-
-// Добавить в конец файла script.js после кода для расписания
-document.addEventListener('DOMContentLoaded', function() {
-  // ... существующий код для расписания ...
-  
-  // Код для кнопки цен
-  const pricesToggle = document.getElementById('prices-toggle');
-  const pricesContent = document.getElementById('prices-content');
-  
-  if (pricesToggle && pricesContent) {
-    pricesToggle.addEventListener('click', function() {
-      const isVisible = pricesContent.classList.contains('show');
-      
-      if (isVisible) {
-        pricesContent.classList.remove('show');
-        pricesToggle.classList.remove('active');
-        setTimeout(() => {
-          pricesContent.style.display = 'none';
-        }, 300);
-      } else {
-        pricesContent.style.display = 'block';
-        setTimeout(() => {
-          pricesContent.classList.add('show');
-        }, 10);
-        pricesToggle.classList.add('active');
-      }
-    });
-  }
-});
-
-// Добавить в конец файла script.js
-document.addEventListener('DOMContentLoaded', function() {
-  // ... существующий код ...
-  
-  // Кнопка-ссылка на расписание в контактах
-  const scheduleLinkBtn = document.getElementById('schedule-link-btn');
-  
-  if (scheduleLinkBtn) {
-    scheduleLinkBtn.addEventListener('click', function() {
-      // Находим секцию расписания
-      const scheduleSection = document.getElementById('schedule-section');
-      const scheduleToggle = document.getElementById('schedule-toggle');
-      const scheduleContent = document.getElementById('schedule-content');
-      
-      if (scheduleSection) {
-        // Плавная прокрутка к секции расписания
-        scheduleSection.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
-        });
-        
-        // Если расписание свернуто, разворачиваем его
-        if (scheduleContent && !scheduleContent.classList.contains('show')) {
-          setTimeout(() => {
-            scheduleContent.style.display = 'block';
-            setTimeout(() => {
-              scheduleContent.classList.add('show');
-            }, 10);
-            scheduleToggle.classList.add('active');
-          }, 500); // Задержка для плавной прокрутки
-        }
-      }
-    });
-  }
-});
-
-// В конец вашего существующего script.js добавьте этот код для мобильного меню
-
-document.addEventListener('DOMContentLoaded', () => {
-  const burgerBtn = document.getElementById('burger-btn');
-  const navMenu = document.getElementById('nav-menu');
-  if (!burgerBtn || !navMenu) return;
-
-  // Открыть/закрыть меню
-  burgerBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    navMenu.classList.toggle('active');
-    burgerBtn.classList.toggle('active');
-  });
-
-  // Закрыть меню при клике на пункт
-  navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      burgerBtn.classList.remove('active');
-    });
-  });
-
-  // Закрыть при клике вне меню
-  document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target) && e.target !== burgerBtn) {
-      navMenu.classList.remove('active');
-      burgerBtn.classList.remove('active');
-    }
-  });
-});
+            // Очищаем контейнер от текста "Загрузка..."
+            this.mapContainer.innerHTML = '';
+            
+            const map = new ymaps.Map(this.mapContainer, { 
+                center: this.coordinates, 
+                zoom: 16,
+                controls:
